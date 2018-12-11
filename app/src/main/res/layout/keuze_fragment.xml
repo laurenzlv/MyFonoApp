@@ -28,62 +28,228 @@
             android:textSize="17sp"
             android:layout_below="@+id/titel"/>
 
+        <TextView
+            android:id="@+id/txtfronting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fronting"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="20dp"
+            android:textSize="17sp"
+            android:layout_below="@+id/txtfonoproces"/>
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/txtfronting">
+        <LinearLayout
+            android:id="@+id/ll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/txtfronting">
+        <TextView
+            android:id="@+id/txtfinaal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/finaal"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="20dp"
+            android:textSize="17sp"
+            />
+
         <RadioGroup
             android:id="@+id/rgfonoproces1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtfonoproces"
-            android:paddingTop="5dp"
-            >
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rbFronting"
-                android:text="@string/fronting"
-                android:textSize="16sp"/>
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/rbStopping"
-                android:text="@string/stopping"
-                android:textSize="16sp"
-                />
-        </RadioGroup>
-
-        <RadioGroup
-            android:id="@+id/rgfonoproces2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rgfonoproces1"
+            android:layout_below="@+id/txtfinaal"
             android:paddingTop="10dp"
             >
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rbFinaal"
-                android:text="@string/finaal"
+                android:id="@+id/rbK-T"
+                android:text="@string/kt"
                 android:textSize="16sp"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rbInitiaal"
-                android:text="@string/initiaal"
+                android:id="@+id/rbG-S"
+                android:text="@string/gs"
+                android:textSize="16sp"
+                />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rbNG-N"
+                android:text="@string/ngn"
                 android:textSize="16sp"
                 />
         </RadioGroup>
 
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/txtfronting"
+            android:layout_alignRight="@+id/ll1">
+            <TextView
+                android:id="@+id/txtinitiaal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/initiaal"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="20dp"
+                android:textSize="17sp"
+                />
+
+            <RadioGroup
+                android:id="@+id/rgfonoproces2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtfinaal"
+                android:paddingTop="10dp"
+                >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rbK-T2"
+                    android:text="@string/kt"
+                    android:textSize="16sp"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rbG-SV"
+                    android:text="@string/gsv"
+                    android:textSize="16sp"
+                    />
+            </RadioGroup>
+
+        </LinearLayout>
+        </LinearLayout>
+
+
+
+
         <TextView
-            android:id="@+id/txtDoelklank"
+            android:id="@+id/txtstopping"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txtdoelklank"
+            android:text="@string/stopping"
             android:layout_centerHorizontal="true"
             android:paddingTop="20dp"
             android:textSize="17sp"
-            android:layout_below="@+id/rgfonoproces2"/>
+            android:layout_below="@+id/ll1"/>
 
+        <LinearLayout
+            android:id="@+id/ll5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/txtstopping">
+            <LinearLayout
+                android:id="@+id/ll6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/txtfinaal2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/finaal"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="20dp"
+                    android:textSize="17sp"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/rgfonoproces3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtfinaal2"
+                    android:paddingTop="10dp"
+                    >
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbS-T"
+                        android:text="@string/st"
+                        android:textSize="16sp"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbCH-T"
+                        android:text="@string/cht"
+                        android:textSize="16sp"
+                        />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:orientation="vertical"
+                android:layout_below="@+id/txtstopping"
+                android:layout_alignRight="@+id/ll1">
+                <TextView
+                    android:id="@+id/txtinitiaal2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/initiaal"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="20dp"
+                    android:textSize="17sp"
+                    />
+
+                <RadioGroup
+                    android:id="@+id/rgfonoproces4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtinitiaal2"
+                    android:paddingTop="10dp"
+                    >
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbG-K"
+                        android:text="@string/gk"
+                        android:textSize="16sp"/>
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbS-Z-T"
+                        android:text="@string/szt"
+                        android:textSize="16sp"
+                        />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rbF-T"
+                        android:text="@string/ft"
+                        android:textSize="16sp"
+                        />
+                </RadioGroup>
+
+            </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -9,11 +9,20 @@
     <string name="welkom">Welkom! Open menu en selecteer wat je wil oefenen.</string>
     <string name="btnSpel1">SPEL 1</string>
     <string name="btnSpel2">SPEL 2</string>
-    <string name="txtfono">Fonologisch proces</string>
+    <string name="txtfono">Fonologisch proces en doelklanken</string>
     <string name="txtselect">Selecteer wat je wil oefenen</string>
     <string name="fronting">Fronting</string>
     <string name="stopping">Stopping</string>
     <string name="finaal">Finaal</string>
     <string name="initiaal">Initiaal</string>
     <string name="txtdoelklank">Doelklank</string>
+    <string name="kt">K-T</string>
+    <string name="gs">G-S</string>
+    <string name="ngn">NG-N</string>
+    <string name="st">S-T</string>
+    <string name="cht">CH-T</string>
+    <string name="gk">G-K</string>
+    <string name="szt">S/Z-T</string>
+    <string name="ft">F-T</string>
+    <string name="gsv">G-S/V</string>
 </resources>
