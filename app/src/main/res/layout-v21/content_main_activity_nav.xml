@@ -53,7 +53,7 @@
             android:layout_alignRight="@+id/welkom"
             android:backgroundTint="@color/colorAccent"
             android:textColor="@android:color/background_light"
-            android:layout_alignEnd="@+id/welkom" tools:targetApi="lollipop"/>
+            android:layout_alignEnd="@+id/welkom" />
 
 
     </RelativeLayout>
