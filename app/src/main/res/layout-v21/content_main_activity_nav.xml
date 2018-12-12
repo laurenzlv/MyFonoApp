@@ -9,7 +9,7 @@
     tools:showIn="@layout/app_bar_main_activity_nav">
 
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="40dp"
@@ -56,6 +56,6 @@
             android:layout_alignEnd="@+id/welkom" />
 
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </android.support.constraint.ConstraintLayout>

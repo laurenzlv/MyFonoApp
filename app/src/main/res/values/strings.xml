@@ -6,9 +6,10 @@
     <string name="nav_header_subtitle">by Laurenz Jannes</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="welkom">Welkom! Open menu en selecteer wat je wil oefenen.</string>
-    <string name="btnSpel1">SPEL 1</string>
-    <string name="btnSpel2">SPEL 2</string>
+    <string name="welkom">Welkom! Maak eerst je keuze in de instellingen daarna kan je het spel spelen.</string>
+    <string name="btnSpel1">Luister goed!</string>
+    <string name="btnSpel2">Zeg het zelf eens</string>
+    <string name="btnInstelling">Instellingen</string>
     <string name="txtfono">Fonologisch proces en doelklanken</string>
     <string name="txtselect">Selecteer wat je wil oefenen</string>
     <string name="fronting">Fronting</string>
@@ -25,4 +26,8 @@
     <string name="szt">S/Z-T</string>
     <string name="ft">F-T</string>
     <string name="gsv">G-S/V</string>
+    <string name="startpagina">Startpagina</string>
+    <string name="keuze">Keuze</string>
+    <string name="medaillemuur">Medaillemuur</string>
+    <string name="info">Info</string>
 </resources>
