@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,4 +107,17 @@ public class StartpaginaFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+    //eigen methodes
+    public void naarKeuze(View v){
+
+        FragmentTransaction tx = getFragmentManager().beginTransaction();
+        tx.replace(R.id.flContent, new KeuzeFragment());
+        tx.commit();
+
+    }
+
+
+
 }
