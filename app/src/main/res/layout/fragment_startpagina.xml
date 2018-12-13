@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartpaginaFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,7 +30,7 @@
             android:textColor="@android:color/background_light"
             tools:targetApi="lollipop"
             android:layout_below="@id/welkom"
-             />
+            />
         <Button
             android:id="@+id/btnspel1"
             android:layout_width="match_parent"
@@ -52,19 +54,7 @@
             android:layout_below="@id/btnspel1"
             />
 
-        <!--  <Button
-          android:id="@+id/cancel"
-          android:layout_width="120dp"
-          android:layout_height="wrap_content"
-          android:textSize="15sp"
-          android:text="@string/btnSpel2"
-          android:layout_below="@+id/welkom"
-          android:layout_alignRight="@+id/welkom"
-          android:backgroundTint="@color/colorAccent"
-          android:textColor="@android:color/background_light"
-          android:layout_alignEnd="@+id/welkom" tools:targetApi="lollipop"/>-->
 
 
     </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>
