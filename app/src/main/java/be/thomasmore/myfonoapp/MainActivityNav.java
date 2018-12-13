@@ -20,7 +20,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class MainActivityNav extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, KeuzeFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, KeuzeFragment.OnFragmentInteractionListener,
+        InfoFragment.OnFragmentInteractionListener, StartpaginaFragment.OnFragmentInteractionListener,
+        MedaillemuurFragment.OnFragmentInteractionListener {
 
     private DrawerLayout mDrawer;
 
@@ -100,14 +102,20 @@ public class MainActivityNav extends AppCompatActivity
         Fragment fragment = null;
         Class fragmentClass;
         switch(item.getItemId()) {
+            case R.id.nav_startpagina:
+                fragmentClass = StartpaginaFragment.class;
+                break;
             case R.id.nav_keuze:
                 fragmentClass = KeuzeFragment.class;
                 break;
             case R.id.nav_info:
-                fragmentClass = KeuzeFragment.class;
+                fragmentClass = InfoFragment.class;
+                break;
+            case R.id.nav_medaillemuur:
+                fragmentClass = MedaillemuurFragment.class;
                 break;
             default:
-                fragmentClass = KeuzeFragment.class;
+                fragmentClass = StartpaginaFragment.class;
         }
 
         try {
