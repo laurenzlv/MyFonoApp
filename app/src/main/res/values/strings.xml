@@ -6,7 +6,7 @@
     <string name="nav_header_subtitle">by Laurenz Jannes</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="infotitel">Info</string>
     <string name="welkom">Welkom! Maak eerst je keuze in de instellingen daarna kan je het spel spelen.</string>
     <string name="btnSpel1">Luister goed!</string>
     <string name="btnSpel2">Zeg het zelf eens</string>
@@ -30,5 +30,11 @@
     <string name="startpagina">Startpagina</string>
     <string name="keuze">Keuze</string>
     <string name="medaillemuur">Medaillemuur</string>
+    <string name="front">Fronting: Het kind spreekt een klank, die vanachter in de mond uitgesproken moet worden (bv: /k/), vooraan in de mond uit (bv: /t/). Bv: toe i.p.v. koe</string>
     <string name="info">Info</string>
+    <string name="fin">Finaal: achteraan het woord.</string>
+    <string name="ini">Initiaal: vooraan het woord</string>
+    <string name="stop">Stopping: Het kind ‘stopt’ een klank die je normaal gezien lang moet aanhouden (bv: /s/). Bv: kat i.p.v. gat</string>
+    <string name="fono">Fonologie is het deel van de taalwetenschap dat de kleinste, nog betekenis genererende onderdelen (klanken) van de gesproken taal bestudeert. Deze kleinste, nog betekenis genererende spraakklanken noemt men in de linguïstiek "fonemen".</string>
 </resources>
+
