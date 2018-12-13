@@ -5,10 +5,96 @@
     android:layout_height="match_parent"
     tools:context=".MedaillemuurFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/spel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnSpel1"
+            android:textSize="20sp"/>
+
+        <ImageView
+            android:id="@+id/gold"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/GOLD"
+            android:alpha=".05"
+            android:contentDescription="@string/btnSpel1"
+            />
+        <ImageView
+            android:id="@+id/silver"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/SILVER"
+            android:alpha="1"
+            android:contentDescription="@string/btnSpel1"
+            />
+        <ImageView
+            android:id="@+id/bronze"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/BRONZE"
+            android:alpha="1"
+            android:contentDescription="@string/btnSpel1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/spel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnSpel2"
+            android:textSize="20sp"/>
+
+        <ImageView
+            android:id="@+id/gold2"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/GOLD"
+            android:alpha=".05"
+            android:contentDescription="@string/btnSpel1"
+            />
+        <ImageView
+            android:id="@+id/silver2"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/SILVER"
+            android:alpha=".05"
+            android:contentDescription="@string/btnSpel1"
+            />
+        <ImageView
+            android:id="@+id/bronze2"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/BRONZE"
+            android:alpha="1"
+            android:contentDescription="@string/btnSpel1"
+            />
+    </LinearLayout>
+    </LinearLayout>
 </FrameLayout>
