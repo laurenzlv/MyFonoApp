@@ -29,7 +29,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/GOLD"
+            android:src="@mipmap/gold"
             android:alpha="1"
             android:contentDescription="@string/btnSpel1"
             />
@@ -38,7 +38,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/SILVER"
+            android:src="@mipmap/silver"
             android:alpha="1"
             android:contentDescription="@string/btnSpel1"
             />
@@ -47,7 +47,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/BRONZE"
+            android:src="@mipmap/bronze"
             android:alpha="1"
             android:contentDescription="@string/btnSpel1"
             />
@@ -73,7 +73,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/GOLD"
+            android:src="@mipmap/gold"
             android:alpha=".05"
             android:contentDescription="@string/btnSpel1"
             />
@@ -82,7 +82,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/SILVER"
+            android:src="@mipmap/silver"
             android:alpha=".05"
             android:contentDescription="@string/btnSpel1"
             />
@@ -91,7 +91,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/BRONZE"
+            android:src="@mipmap/bronze"
             android:alpha="1"
             android:contentDescription="@string/btnSpel1"
             />
