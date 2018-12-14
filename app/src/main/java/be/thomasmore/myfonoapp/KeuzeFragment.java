@@ -3,10 +3,14 @@ package be.thomasmore.myfonoapp;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 /**
@@ -28,6 +32,11 @@ public class KeuzeFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    RadioGroup g1;
+    RadioGroup g2;
+    RadioGroup g3;
+    RadioGroup g4;
 
     public KeuzeFragment() {
         // Required empty public constructor
@@ -58,13 +67,69 @@ public class KeuzeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_keuze, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        final View RootView = inflater.inflate(R.layout.fragment_keuze, container, false);
+
+        g1= RootView.findViewById(R.id.g1);
+        g2= RootView.findViewById(R.id.g2);
+        g3= RootView.findViewById(R.id.g3);
+        g4= RootView.findViewById(R.id.g4);
+
+        if (g2 != null){
+            Toast.makeText(getActivity(),"g2 not null",Toast.LENGTH_SHORT).show();
+
+        }
+        g1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Toast.makeText(getActivity(),"g1 changed",Toast.LENGTH_SHORT).show();
+                uncheckOtherRadioGroups(g2,g3,g4);
+
+            }
+        });
+        g2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Toast.makeText(getActivity(),"g2 changed",Toast.LENGTH_SHORT).show();
+                uncheckOtherRadioGroups(g1,g3,g4);
+
+            }
+        });
+        g3.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Toast.makeText(getActivity(),"g3 changed",Toast.LENGTH_SHORT).show();
+                uncheckOtherRadioGroups(g2,g3,g4);
+
+            }
+        });
+        g4.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                Toast.makeText(getActivity(),"g4 changed",Toast.LENGTH_SHORT).show();
+                uncheckOtherRadioGroups(g1,g2,g3);
+
+            }
+        });
+
+        return RootView;
+    }
+
+    public void uncheckOtherRadioGroups(RadioGroup rg1,RadioGroup rg2,RadioGroup rg3){
+        rg1.setOnCheckedChangeListener(null);
+        rg2.setOnCheckedChangeListener(null);
+        rg3.setOnCheckedChangeListener(null);
+        rg1.clearCheck();
+        rg2.clearCheck();
+        rg3.clearCheck();
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
