@@ -69,6 +69,7 @@ public class StartpaginaFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_startpagina, container, false);
         Button btnInstellingen = (Button) view.findViewById(R.id.btninstelling);
+        Button btnLuisterGoed = (Button) view.findViewById(R.id.spel1);
 
         btnInstellingen.setOnClickListener(new View.OnClickListener()
         {
@@ -78,6 +79,15 @@ public class StartpaginaFragment extends Fragment {
                 naarKeuze(v);
             }
         });
+
+//        btnLuisterGoed.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View v)
+//            {
+//                naarSpel1(v);
+//            }
+//        });
 
         // Inflate the layout for this fragment
         return view;
@@ -128,6 +138,14 @@ public class StartpaginaFragment extends Fragment {
 
         FragmentTransaction tx = getFragmentManager().beginTransaction();
         tx.replace(R.id.flContent, new KeuzeFragment());
+        tx.commit();
+
+    }
+
+    public void naarSpel1(View v){
+
+        FragmentTransaction tx = getFragmentManager().beginTransaction();
+        tx.replace(R.id.flContent, new LuisterGoedFragment());
         tx.commit();
 
     }

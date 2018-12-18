@@ -148,7 +148,7 @@ public class KeuzeFragment extends Fragment {
 
     public void keuzeOpslaan(View v){
         // KEUZE OPSLAAN
-        // REDIRECT TO STARTPAGINA
+        //ALS SESSION VARIABLE
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -23,7 +23,7 @@ import android.widget.Toast;
 public class MainActivityNav extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, KeuzeFragment.OnFragmentInteractionListener,
         InfoFragment.OnFragmentInteractionListener, StartpaginaFragment.OnFragmentInteractionListener,
-        MedaillemuurFragment.OnFragmentInteractionListener {
+        MedaillemuurFragment.OnFragmentInteractionListener, LuisterGoedFragment.OnFragmentInteractionListener {
 
     private DrawerLayout mDrawer;
 
