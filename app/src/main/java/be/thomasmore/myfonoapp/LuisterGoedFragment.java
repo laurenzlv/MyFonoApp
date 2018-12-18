@@ -1,30 +1,23 @@
 package be.thomasmore.myfonoapp;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link KeuzeFragment.OnFragmentInteractionListener} interface
+ * {@link LuisterGoedFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link KeuzeFragment#newInstance} factory method to
+ * Use the {@link LuisterGoedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class KeuzeFragment extends Fragment {
+public class LuisterGoedFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,12 +29,7 @@ public class KeuzeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    RadioGroup g1;
-    RadioGroup g2;
-    RadioGroup g3;
-    RadioGroup g4;
-
-    public KeuzeFragment() {
+    public LuisterGoedFragment() {
         // Required empty public constructor
     }
 
@@ -51,11 +39,11 @@ public class KeuzeFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment KeuzeFragment.
+     * @return A new instance of fragment LuisterGoedFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static KeuzeFragment newInstance(String param1, String param2) {
-        KeuzeFragment fragment = new KeuzeFragment();
+    public static LuisterGoedFragment newInstance(String param1, String param2) {
+        LuisterGoedFragment fragment = new LuisterGoedFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,72 +58,13 @@ public class KeuzeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        final View RootView = inflater.inflate(R.layout.fragment_keuze, container, false);
-
-        g1= RootView.findViewById(R.id.g1);
-        g2= RootView.findViewById(R.id.g2);
-        g3= RootView.findViewById(R.id.g3);
-        g4= RootView.findViewById(R.id.g4);
-
-
-        g1.setOnCheckedChangeListener(mRG1Listener);
-        g2.setOnCheckedChangeListener(mRG2Listener);
-        g3.setOnCheckedChangeListener(mRG3Listener);
-        g4.setOnCheckedChangeListener(mRG4Listener);
-
-        return RootView;
-    }
-
-    private RadioGroup.OnCheckedChangeListener mRG3Listener = new RadioGroup.OnCheckedChangeListener()
-    {
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            uncheckOtherRadioGroups(g2,g1,g4);
-        }
-    };
-    private RadioGroup.OnCheckedChangeListener mRG1Listener = new RadioGroup.OnCheckedChangeListener()
-    {
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            uncheckOtherRadioGroups(g2,g3,g4);
-        }
-    };
-    private RadioGroup.OnCheckedChangeListener mRG2Listener = new RadioGroup.OnCheckedChangeListener()
-    {
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            uncheckOtherRadioGroups(g3,g1,g4);
-        }
-    };
-    private RadioGroup.OnCheckedChangeListener mRG4Listener = new RadioGroup.OnCheckedChangeListener()
-    {
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            uncheckOtherRadioGroups(g2,g1,g3);
-        }
-    };
-
-    public void uncheckOtherRadioGroups(RadioGroup rg1,RadioGroup rg2,RadioGroup rg3){
-        g1.setOnCheckedChangeListener(null);
-        g2.setOnCheckedChangeListener(null);
-        g3.setOnCheckedChangeListener(null);
-        g4.setOnCheckedChangeListener(null);
-
-        rg1.clearCheck();
-        rg2.clearCheck();
-        rg3.clearCheck();
-
-        g1.setOnCheckedChangeListener(mRG1Listener);
-        g2.setOnCheckedChangeListener(mRG2Listener);
-        g3.setOnCheckedChangeListener(mRG3Listener);
-        g4.setOnCheckedChangeListener(mRG4Listener);
-    }
-
-    public void keuzeOpslaan(View v){
-        // KEUZE OPSLAAN
-        // REDIRECT TO STARTPAGINA
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_luister_goed, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -176,6 +105,4 @@ public class KeuzeFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-
 }
