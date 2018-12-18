@@ -6,9 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -77,6 +79,17 @@ public class KeuzeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View RootView = inflater.inflate(R.layout.fragment_keuze, container, false);
+
+        Button btnKeuzeOpslaan = (Button) RootView.findViewById(R.id.btnKeuzeOpslaan);
+
+        btnKeuzeOpslaan.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                naarStartPagina(v);
+            }
+        });
 
         g1= RootView.findViewById(R.id.g1);
         g2= RootView.findViewById(R.id.g2);
@@ -176,6 +189,19 @@ public class KeuzeFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
+
+    //eigen methodes
+
+
+    public void naarStartPagina(View v){
+        FragmentTransaction tx = getFragmentManager().beginTransaction();
+        tx.replace(R.id.flContent, new StartpaginaFragment());
+        tx.commit();
+    }
+
+
 
 
 }

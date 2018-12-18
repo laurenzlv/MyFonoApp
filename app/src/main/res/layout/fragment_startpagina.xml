@@ -30,7 +30,6 @@
             android:textColor="@android:color/background_light"
             tools:targetApi="lollipop"
             android:layout_below="@id/welkom"
-            android:onClick="naarKeuze"
             />
         <Button
             android:id="@+id/btnspel1"
