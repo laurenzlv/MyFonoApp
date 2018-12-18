@@ -27,6 +27,7 @@ public class MainActivityNav extends AppCompatActivity
 
     private DrawerLayout mDrawer;
 
+
     @Override
     public void onFragmentInteraction(Uri uri){
         //you can leave it empty
@@ -39,6 +40,8 @@ public class MainActivityNav extends AppCompatActivity
         setContentView(R.layout.activity_main_nav);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -56,6 +59,10 @@ public class MainActivityNav extends AppCompatActivity
         tx.replace(R.id.flContent, new StartpaginaFragment());
         tx.commit();
     }
+
+
+
+
 
     @Override
     public void onBackPressed() {

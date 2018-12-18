@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -65,8 +66,21 @@ public class StartpaginaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_startpagina, container, false);
+        Button btnInstellingen = (Button) view.findViewById(R.id.btninstelling);
+
+        btnInstellingen.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                naarKeuze(v);
+            }
+        });
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_startpagina, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -117,6 +131,8 @@ public class StartpaginaFragment extends Fragment {
         tx.commit();
 
     }
+
+
 
 
 
