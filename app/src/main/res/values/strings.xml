@@ -26,6 +26,7 @@
     <string name="gk">G-K</string>
     <string name="szt">S/Z-T</string>
     <string name="ft">F-T</string>
+    <string name="opslaan">Keuze opslaan</string>
     <string name="gsv">G-S/V</string>
     <string name="startpagina">Startpagina</string>
     <string name="keuze">Keuze</string>
@@ -36,5 +37,8 @@
     <string name="ini">Initiaal: vooraan het woord</string>
     <string name="stop">Stopping: Het kind ‘stopt’ een klank die je normaal gezien lang moet aanhouden (bv: /s/). Bv: kat i.p.v. gat</string>
     <string name="fono">Fonologie is het deel van de taalwetenschap dat de kleinste, nog betekenis genererende onderdelen (klanken) van de gesproken taal bestudeert. Deze kleinste, nog betekenis genererende spraakklanken noemt men in de linguïstiek "fonemen".</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 

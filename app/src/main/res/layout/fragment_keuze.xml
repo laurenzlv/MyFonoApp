@@ -240,6 +240,19 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btninstelling"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/opslaan"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/background_light"
+            tools:targetApi="lollipop"
+            android:layout_below="@id/ll5"
+            android:onClick="keuzeOpslaan"
+            android:layout_marginTop="20dp"/>
     </RelativeLayout>
 
 </FrameLayout>
