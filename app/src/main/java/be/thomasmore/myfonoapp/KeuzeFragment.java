@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -191,14 +193,42 @@ public class KeuzeFragment extends Fragment {
     }
 
 
-
-    //eigen methodes
-
-
     public void naarStartPagina(View v){
+        geefKeuze();
         FragmentTransaction tx = getFragmentManager().beginTransaction();
         tx.replace(R.id.flContent, new StartpaginaFragment());
         tx.commit();
+    }
+
+    public int geefKeuze(){
+        RadioButton checkedRadioButton = (RadioButton) getView().findViewById(R.id.rbK_T_fin);;
+
+        RadioGroup rg1 = getView().findViewById(R.id.g1);
+        RadioGroup rg2 = getView().findViewById(R.id.g2);
+        RadioGroup rg3 = getView().findViewById(R.id.g3);
+        RadioGroup rg4 = getView().findViewById(R.id.g4);
+
+        int rg1s = rg1.getCheckedRadioButtonId();
+        int rg2s = rg2.getCheckedRadioButtonId();
+        int rg3s = rg3.getCheckedRadioButtonId();
+        int rg4s = rg4.getCheckedRadioButtonId();
+
+        if(rg1s != -1){
+            checkedRadioButton = (RadioButton) getView().findViewById(rg1s);
+        }
+        if(rg2s != -1){
+            checkedRadioButton = (RadioButton) getView().findViewById(rg2s);
+        }
+        if(rg3s != -1){
+            checkedRadioButton = (RadioButton) getView().findViewById(rg3s);
+        }
+        if(rg4s != -1){
+            checkedRadioButton = (RadioButton) getView().findViewById(rg4s);
+        }
+
+        Toast.makeText(getActivity(), checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+
+        return checkedRadioButton.getId();
     }
 
 
