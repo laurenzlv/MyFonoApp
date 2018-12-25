@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -62,6 +63,7 @@ public class InfoFragment extends Fragment {
 
         SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
         String keuze = pref.getString("keuze", "");
+        Toast.makeText(getActivity(),keuze, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -28,6 +31,7 @@ public class MedaillemuurFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
 
     public MedaillemuurFragment() {
         // Required empty public constructor
@@ -107,4 +111,8 @@ public class MedaillemuurFragment extends Fragment {
 
         void onFragmentInteraction(Uri uri);
     }
+
+
+
+
 }
