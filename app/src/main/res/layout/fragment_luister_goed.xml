@@ -3,13 +3,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LuisterGoedFragment">
+    tools:context=".LuisterGoedFragment"
+    >
 
     <ImageView
+        android:id="@+id/oor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ear"
-        android:layout_margin="30dp"
-        android:contentDescription="@string/btnSpel1"/>
+        android:src="@mipmap/oor"
+        android:padding="40dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="40dp">
+
+        <ImageButton
+            android:id="@+id/pause"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:contentDescription="@string/button"
+            android:src="@drawable/ic_pause_black_24dp"
+            tools:targetApi="lollipop"
+            />
+
+        <ImageButton
+            android:id="@+id/play"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:contentDescription="@string/button"
+            android:src="@drawable/ic_play_arrow_black_24dp"
+            tools:targetApi="lollipop"
+            />
+
+        <ImageButton
+            android:id="@+id/stopp"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:contentDescription="@string/button"
+            android:src="@drawable/ic_stop_black_24dp"
+            tools:targetApi="lollipop"
+            />
+    </LinearLayout>
+
+
 
 </FrameLayout>

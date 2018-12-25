@@ -1,12 +1,15 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 /**
@@ -28,6 +31,10 @@ public class LuisterGoedFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    MediaPlayer player;
+    ImageButton playbtn;
+    ImageButton pausebtn;
+    ImageButton stopbtn;
 
     public LuisterGoedFragment() {
         // Required empty public constructor
@@ -58,13 +65,46 @@ public class LuisterGoedFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_luister_goed, container, false);
+        final View RootView = inflater.inflate(R.layout.fragment_luister_goed, container, false);
+
+
+        playbtn = (ImageButton) RootView.findViewById(R.id.play);
+        pausebtn = (ImageButton) RootView.findViewById(R.id.pause);
+        stopbtn = (ImageButton) RootView.findViewById(R.id.stopp);
+
+        playbtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                //OnCLick Stuff
+                Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        pausebtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                //OnCLick Stuff
+                Toast.makeText(getActivity(), "pause", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        stopbtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+                //OnCLick Stuff
+                Toast.makeText(getActivity(), "stop", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        return RootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,4 +145,6 @@ public class LuisterGoedFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }
