@@ -82,29 +82,54 @@ public class LuisterGoedFragment extends Fragment {
 
         playbtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                //OnCLick Stuff
-                Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
+                if (player == null){
+                    player = MediaPlayer.create(view.getContext(), R.raw.bed);
+                    player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            stopPlayer();
+                        }
+                    });
+                }
+                player.start();
             }
         });
 
         pausebtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                //OnCLick Stuff
-                Toast.makeText(getActivity(), "pause", Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(getActivity(), "pause", Toast.LENGTH_SHORT).show();
+                if (player != null){
+                    player.pause();
+                }
             }
         });
 
         stopbtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                //OnCLick Stuff
-                Toast.makeText(getActivity(), "stop", Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(getActivity(), "stop", Toast.LENGTH_SHORT).show();
+                stopPlayer();
             }
         });
 
+
         return RootView;
+    }
+
+    private void stopPlayer(){
+        if (player != null){
+            player.release();
+            player = null;
+        }
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        stopPlayer();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
