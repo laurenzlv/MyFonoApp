@@ -1,12 +1,14 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 /**
@@ -58,6 +60,10 @@ public class InfoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String keuze = pref.getString("keuze", "");
+        Toast.makeText(getActivity(),keuze, Toast.LENGTH_SHORT).show();
     }
 
     @Override
