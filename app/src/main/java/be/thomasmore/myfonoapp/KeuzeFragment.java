@@ -2,6 +2,7 @@ package be.thomasmore.myfonoapp;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -32,11 +33,19 @@ public class KeuzeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    //sharedPreferences
+    SharedPreferences sharedpreferences;
+    public static final String mypreference = "mypref";
+
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    GlobalState gs;
 
     RadioGroup g1;
     RadioGroup g2;
@@ -67,11 +76,19 @@ public class KeuzeFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        gs = (GlobalState) getActivity().getApplication();
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+        edt.putString("keuze", "test");
+        edt.commit();
 
     }
 
@@ -109,6 +126,7 @@ public class KeuzeFragment extends Fragment {
     {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             uncheckOtherRadioGroups(g2,g1,g4);
+
         }
     };
     private RadioGroup.OnCheckedChangeListener mRG1Listener = new RadioGroup.OnCheckedChangeListener()

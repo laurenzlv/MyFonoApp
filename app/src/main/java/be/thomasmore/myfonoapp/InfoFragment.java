@@ -1,6 +1,7 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -58,6 +59,9 @@ public class InfoFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String keuze = pref.getString("keuze", "");
     }
 
     @Override
