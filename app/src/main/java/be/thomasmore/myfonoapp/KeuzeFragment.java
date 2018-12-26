@@ -246,7 +246,7 @@ public class KeuzeFragment extends Fragment {
         //localstorage opslaan van keuze
         SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor edt = pref.edit();
-        edt.putInt("keuzeId", checkedRadioButton.getId());
+        edt.putInt("keuze", checkedRadioButton.getId());
         edt.commit();
 
         return checkedRadioButton.getId();

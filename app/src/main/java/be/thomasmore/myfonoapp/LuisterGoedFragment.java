@@ -1,6 +1,7 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -122,7 +123,8 @@ public class LuisterGoedFragment extends Fragment {
 
     private void setAudioFile(){
 
-        int keuzeId = 0; //hier keuze uit localstorage VAN id geen text.string want 2 x K-T
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int keuzeId = pref.getInt("keuze",0); //hier keuze uit localstorage VAN id geen text.string want 2 x K-T
 
         switch (keuzeId) {
             case 2131230874:  player = MediaPlayer.create(getContext(), R.raw.reeks1);
