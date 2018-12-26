@@ -241,12 +241,12 @@ public class KeuzeFragment extends Fragment {
             checkedRadioButton = (RadioButton) getView().findViewById(rg4s);
         }
 
-        Toast.makeText(getActivity(), checkedRadioButton.getText(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), checkedRadioButton.getText().toString(), Toast.LENGTH_SHORT).show();
 
         //localstorage opslaan van keuze
         SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor edt = pref.edit();
-        edt.putString("keuze", checkedRadioButton.getText().toString());
+        edt.putInt("keuzeId", checkedRadioButton.getId());
         edt.commit();
 
         return checkedRadioButton.getId();

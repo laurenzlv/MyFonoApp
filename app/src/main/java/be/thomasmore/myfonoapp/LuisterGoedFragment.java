@@ -29,7 +29,7 @@ public class LuisterGoedFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    GlobalState gs;
     private OnFragmentInteractionListener mListener;
     MediaPlayer player;
     ImageButton playbtn;
@@ -60,12 +60,13 @@ public class LuisterGoedFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        gs = (GlobalState) getActivity().getApplication();
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
 
     }
 
@@ -85,7 +86,7 @@ public class LuisterGoedFragment extends Fragment {
 
                 Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
                 if (player == null){
-                    player = MediaPlayer.create(view.getContext(), R.raw.bed);
+                    setAudioFile();
                     player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                         @Override
                         public void onCompletion(MediaPlayer mp) {
@@ -117,6 +118,26 @@ public class LuisterGoedFragment extends Fragment {
 
 
         return RootView;
+    }
+
+    private void setAudioFile(){
+
+        int keuzeId = 0; //hier keuze uit localstorage VAN id geen text.string want 2 x K-T
+
+        switch (keuzeId) {
+            case 2131230874:  player = MediaPlayer.create(getContext(), R.raw.reeks1);
+            case 2131230872:  player = MediaPlayer.create(getContext(), R.raw.reeks3);
+            case 2131230876:  player = MediaPlayer.create(getContext(), R.raw.reeks5);
+            case 2131230875:  player = MediaPlayer.create(getContext(), R.raw.reeks2);
+            case 2131230873:  player = MediaPlayer.create(getContext(), R.raw.reeks4);
+            case 2131230877:  player = MediaPlayer.create(getContext(), R.raw.reeks6);
+            case 2131230869:  player = MediaPlayer.create(getContext(), R.raw.reeks3);
+            case 2131230871:  player = MediaPlayer.create(getContext(), R.raw.reeks4);
+            case 2131230878:  player = MediaPlayer.create(getContext(), R.raw.reeks7en8);
+            case 2131230870:  player = MediaPlayer.create(getContext(), R.raw.reeks9);
+                break;
+            default: break;
+        }
     }
 
     private void stopPlayer(){
