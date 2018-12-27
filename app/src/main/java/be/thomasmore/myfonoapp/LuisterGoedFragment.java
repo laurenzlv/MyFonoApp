@@ -158,7 +158,6 @@ public class LuisterGoedFragment extends Fragment {
                 }
             });
         }
-        Toast.makeText(getActivity(), "player=start", Toast.LENGTH_SHORT).show();
         player.start();
     }
 

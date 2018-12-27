@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -76,6 +77,7 @@ public class StartpaginaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_startpagina, container, false);
         Button btnInstellingen = (Button) view.findViewById(R.id.btninstelling);
         Button btnLuisterGoed = (Button) view.findViewById(R.id.btnspel1);
+        Button btnZegZelf = (Button) view.findViewById(R.id.btnspel2);
         TextView hiddentext = (TextView) view.findViewById(R.id.hiddenkeuze);
 
         Bundle bun = getArguments();
@@ -99,6 +101,15 @@ public class StartpaginaFragment extends Fragment {
             public void onClick(View v)
             {
                 naarSpel1(v);
+            }
+        });
+
+        btnZegZelf.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                naarSpel2(v);
             }
         });
 
@@ -159,15 +170,39 @@ public class StartpaginaFragment extends Fragment {
 
         TextView hiddentext = (TextView) getView().findViewById(R.id.hiddenkeuze);
         String text = hiddentext.getText().toString();
-        int keuze = Integer.valueOf(text);
-        Bundle bun = new Bundle();
-        bun.putInt("hiddenkeuze",keuze);
+        if(text != ""){
+            int keuze = Integer.valueOf(text);
+            Bundle bun = new Bundle();
+            bun.putInt("hiddenkeuze",keuze);
+            LuisterGoedFragment sgf = new LuisterGoedFragment();
+            sgf.setArguments(bun);
+            FragmentTransaction tx = getFragmentManager().beginTransaction();
+            tx.replace(R.id.flContent, sgf);
+            tx.commit();
+        }else
+        {
+            Toast.makeText(getActivity(), "Selecteer eerst wat je wil oefenen!", Toast.LENGTH_LONG).show();
+        }
 
-        LuisterGoedFragment sgf = new LuisterGoedFragment();
-        sgf.setArguments(bun);
-        FragmentTransaction tx = getFragmentManager().beginTransaction();
-        tx.replace(R.id.flContent, sgf);
-        tx.commit();
+    }
+
+    public void naarSpel2(View v){
+
+        TextView hiddentext = (TextView) getView().findViewById(R.id.hiddenkeuze);
+        String text = hiddentext.getText().toString();
+        if(text != ""){
+            int keuze = Integer.valueOf(text);
+            Bundle bun = new Bundle();
+            bun.putInt("hiddenkeuze",keuze);
+            ZegHetZelfFragment zhz = new ZegHetZelfFragment();
+            zhz.setArguments(bun);
+            FragmentTransaction tx = getFragmentManager().beginTransaction();
+            tx.replace(R.id.flContent, zhz);
+            tx.commit();
+        }else
+        {
+            Toast.makeText(getActivity(), "Selecteer eerst wat je wil oefenen!", Toast.LENGTH_LONG).show();
+        }
 
     }
 

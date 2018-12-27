@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/hiddenkeuze"
             android:layout_below="@id/btnspel2"
-            android:visibility="visible"/>
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 </FrameLayout>
