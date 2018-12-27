@@ -30,7 +30,7 @@ public class LuisterGoedFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    GlobalState gs;
+
     private OnFragmentInteractionListener mListener;
     MediaPlayer player;
     ImageButton playbtn;
@@ -62,7 +62,6 @@ public class LuisterGoedFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        gs = (GlobalState) getActivity().getApplication();
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -78,6 +77,7 @@ public class LuisterGoedFragment extends Fragment {
         final View RootView = inflater.inflate(R.layout.fragment_luister_goed, container, false);
 
 
+
         playbtn = (ImageButton) RootView.findViewById(R.id.play);
         pausebtn = (ImageButton) RootView.findViewById(R.id.pause);
         stopbtn = (ImageButton) RootView.findViewById(R.id.stopp);
@@ -85,17 +85,8 @@ public class LuisterGoedFragment extends Fragment {
         playbtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
 
-                Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
-                if (player == null){
-                    setAudioFile();
-                    player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                        @Override
-                        public void onCompletion(MediaPlayer mp) {
-                            stopPlayer();
-                        }
-                    });
-                }
-                player.start();
+                setAudioFile();
+
             }
         });
 
@@ -123,23 +114,52 @@ public class LuisterGoedFragment extends Fragment {
 
     private void setAudioFile(){
 
-        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        int keuzeId = pref.getInt("keuze",0); //hier keuze uit localstorage VAN id geen text.string want 2 x K-T
-
-        switch (keuzeId) {
-            case 2131230874:  player = MediaPlayer.create(getContext(), R.raw.reeks1);
-            case 2131230872:  player = MediaPlayer.create(getContext(), R.raw.reeks3);
-            case 2131230876:  player = MediaPlayer.create(getContext(), R.raw.reeks5);
-            case 2131230875:  player = MediaPlayer.create(getContext(), R.raw.reeks2);
-            case 2131230873:  player = MediaPlayer.create(getContext(), R.raw.reeks4);
-            case 2131230877:  player = MediaPlayer.create(getContext(), R.raw.reeks6);
-            case 2131230869:  player = MediaPlayer.create(getContext(), R.raw.reeks3);
-            case 2131230871:  player = MediaPlayer.create(getContext(), R.raw.reeks4);
-            case 2131230878:  player = MediaPlayer.create(getContext(), R.raw.reeks7en8);
-            case 2131230870:  player = MediaPlayer.create(getContext(), R.raw.reeks9);
-                break;
-            default: break;
+        int keuze = 0;
+        Bundle bun = getArguments();
+        if(bun != null) {
+            keuze = bun.getInt("hiddenkeuze");
         }
+
+        //SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        //int keuzeId = pref.getInt("keuze",0); //hier keuze uit localstorage VAN id geen text.string want 2 x K-T
+
+        switch (keuze) {
+            case 2131230874:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
+                break;
+            case 2131230872:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
+                break;
+            case 2131230876:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks5);
+                break;
+            case 2131230875:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks1);
+                break;
+            case 2131230873:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
+                break;
+            case 2131230877:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks2);
+                break;
+            case 2131230871:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks9);
+                break;
+            case 2131230878:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks6);
+                break;
+            case 2131230870:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
+                break;
+            case 2131230879:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks7en8);
+                break;
+            default: player = MediaPlayer.create(getView().getContext(), R.raw.fout);
+                break;
+        }
+
+        Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
+        if (player == null){
+            Toast.makeText(getActivity(), "player=null", Toast.LENGTH_SHORT).show();
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stopPlayer();
+                }
+            });
+        }
+        Toast.makeText(getActivity(), "player=start", Toast.LENGTH_SHORT).show();
+        player.start();
     }
 
     private void stopPlayer(){
@@ -147,6 +167,8 @@ public class LuisterGoedFragment extends Fragment {
             player.release();
             player = null;
         }
+
+
     }
 
     @Override

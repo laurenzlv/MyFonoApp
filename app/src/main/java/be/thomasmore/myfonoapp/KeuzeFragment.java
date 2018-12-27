@@ -36,7 +36,7 @@ public class KeuzeFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     //sharedPreferences
-    SharedPreferences sharedpreferences;
+    SharedPreferences sh;
     public static final String mypreference = "mypref";
 
 
@@ -47,7 +47,6 @@ public class KeuzeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    GlobalState gs;
 
     RadioGroup g1;
     RadioGroup g2;
@@ -78,8 +77,6 @@ public class KeuzeFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
-        gs = (GlobalState) getActivity().getApplication();
 
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -118,6 +115,7 @@ public class KeuzeFragment extends Fragment {
         g3.setOnCheckedChangeListener(mRG3Listener);
         g4.setOnCheckedChangeListener(mRG4Listener);
 
+
         return RootView;
     }
 
@@ -125,6 +123,7 @@ public class KeuzeFragment extends Fragment {
     {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             uncheckOtherRadioGroups(g2,g1,g4);
+            //clearPrefAndUpdate();
 
         }
     };
@@ -132,20 +131,31 @@ public class KeuzeFragment extends Fragment {
     {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             uncheckOtherRadioGroups(g2,g3,g4);
+            //clearPrefAndUpdate();
         }
     };
     private RadioGroup.OnCheckedChangeListener mRG2Listener = new RadioGroup.OnCheckedChangeListener()
     {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             uncheckOtherRadioGroups(g3,g1,g4);
+            //clearPrefAndUpdate();
         }
     };
     private RadioGroup.OnCheckedChangeListener mRG4Listener = new RadioGroup.OnCheckedChangeListener()
     {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             uncheckOtherRadioGroups(g2,g1,g3);
+            //clearPrefAndUpdate();
         }
     };
+
+    public void clearPrefAndUpdate(){
+        //pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        //SharedPreferences.Editor edt = pref.edit();
+        //edt.remove("keuze");
+        //edt.commit();
+        geefKeuze();
+    }
 
     public void uncheckOtherRadioGroups(RadioGroup rg1,RadioGroup rg2,RadioGroup rg3){
         g1.setOnCheckedChangeListener(null);
@@ -210,9 +220,7 @@ public class KeuzeFragment extends Fragment {
 
     public void naarStartPagina(View v){
         geefKeuze();
-        FragmentTransaction tx = getFragmentManager().beginTransaction();
-        tx.replace(R.id.flContent, new StartpaginaFragment());
-        tx.commit();
+
     }
 
     public int geefKeuze(){
@@ -243,11 +251,22 @@ public class KeuzeFragment extends Fragment {
 
         Toast.makeText(getActivity(), checkedRadioButton.getText().toString(), Toast.LENGTH_SHORT).show();
 
+
+        Bundle bun = new Bundle();
+        bun.putInt("hiddenkeuze",checkedRadioButton.getId());
+
+        // ipv sharedpref keuze meegeven is proberen met bundle
+        FragmentTransaction tx = getFragmentManager().beginTransaction();
+        StartpaginaFragment sf = new StartpaginaFragment();
+        sf.setArguments(bun);
+        tx.replace(R.id.flContent, sf);
+        tx.commit();
+
         //localstorage opslaan van keuze
-        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor edt = pref.edit();
-        edt.putInt("keuze", checkedRadioButton.getId());
-        edt.commit();
+        //SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        //SharedPreferences.Editor edt = pref.edit();
+        //edt.putInt("keuze", checkedRadioButton.getId());
+        //edt.commit();
 
         return checkedRadioButton.getId();
     }

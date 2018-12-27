@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -68,12 +71,18 @@ public class StartpaginaFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_startpagina, container, false);
         Button btnInstellingen = (Button) view.findViewById(R.id.btninstelling);
         Button btnLuisterGoed = (Button) view.findViewById(R.id.btnspel1);
+        TextView hiddentext = (TextView) view.findViewById(R.id.hiddenkeuze);
+
+        Bundle bun = getArguments();
+        if(bun != null) {
+            int keuze = bun.getInt("hiddenkeuze");
+            hiddentext.setText(String.valueOf(keuze));
+        }
 
         btnInstellingen.setOnClickListener(new View.OnClickListener()
         {
@@ -148,8 +157,16 @@ public class StartpaginaFragment extends Fragment {
 
     public void naarSpel1(View v){
 
+        TextView hiddentext = (TextView) getView().findViewById(R.id.hiddenkeuze);
+        String text = hiddentext.getText().toString();
+        int keuze = Integer.valueOf(text);
+        Bundle bun = new Bundle();
+        bun.putInt("hiddenkeuze",keuze);
+
+        LuisterGoedFragment sgf = new LuisterGoedFragment();
+        sgf.setArguments(bun);
         FragmentTransaction tx = getFragmentManager().beginTransaction();
-        tx.replace(R.id.flContent, new LuisterGoedFragment());
+        tx.replace(R.id.flContent, sgf);
         tx.commit();
 
     }
