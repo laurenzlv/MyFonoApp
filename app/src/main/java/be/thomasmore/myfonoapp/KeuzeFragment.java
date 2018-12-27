@@ -252,21 +252,22 @@ public class KeuzeFragment extends Fragment {
         Toast.makeText(getActivity(), checkedRadioButton.getText().toString(), Toast.LENGTH_SHORT).show();
 
 
-        Bundle bun = new Bundle();
-        bun.putInt("hiddenkeuze",checkedRadioButton.getId());
+        //Bundle bun = new Bundle();
+        //bun.putInt("hiddenkeuze",checkedRadioButton.getId());
 
         // ipv sharedpref keuze meegeven is proberen met bundle
         FragmentTransaction tx = getFragmentManager().beginTransaction();
         StartpaginaFragment sf = new StartpaginaFragment();
-        sf.setArguments(bun);
-        tx.replace(R.id.flContent, sf);
-        tx.commit();
+        //sf.setArguments(bun);
+
 
         //localstorage opslaan van keuze
-        //SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        //SharedPreferences.Editor edt = pref.edit();
-        //edt.putInt("keuze", checkedRadioButton.getId());
-        //edt.commit();
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+        edt.putInt("keuze", checkedRadioButton.getId());
+        edt.commit();
+        tx.replace(R.id.flContent, sf);
+        tx.commit();
 
         return checkedRadioButton.getId();
     }

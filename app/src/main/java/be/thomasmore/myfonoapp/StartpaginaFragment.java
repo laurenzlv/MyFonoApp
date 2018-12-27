@@ -168,41 +168,41 @@ public class StartpaginaFragment extends Fragment {
 
     public void naarSpel1(View v){
 
-        TextView hiddentext = (TextView) getView().findViewById(R.id.hiddenkeuze);
-        String text = hiddentext.getText().toString();
-        if(text != ""){
-            int keuze = Integer.valueOf(text);
-            Bundle bun = new Bundle();
-            bun.putInt("hiddenkeuze",keuze);
+        //TextView hiddentext = (TextView) getView().findViewById(R.id.hiddenkeuze);
+        //String text = hiddentext.getText().toString();
+        //if(text != ""){
+            //int keuze = Integer.valueOf(text);
+            //Bundle bun = new Bundle();
+            //bun.putInt("hiddenkeuze",keuze);
             LuisterGoedFragment sgf = new LuisterGoedFragment();
-            sgf.setArguments(bun);
+            //sgf.setArguments(bun);
             FragmentTransaction tx = getFragmentManager().beginTransaction();
             tx.replace(R.id.flContent, sgf);
             tx.commit();
-        }else
-        {
-            Toast.makeText(getActivity(), "Selecteer eerst wat je wil oefenen!", Toast.LENGTH_LONG).show();
-        }
+            //}else
+        //{
+            //Toast.makeText(getActivity(), "Selecteer eerst wat je wil oefenen!", Toast.LENGTH_LONG).show();
+            //}
 
     }
 
     public void naarSpel2(View v){
 
-        TextView hiddentext = (TextView) getView().findViewById(R.id.hiddenkeuze);
-        String text = hiddentext.getText().toString();
-        if(text != ""){
-            int keuze = Integer.valueOf(text);
-            Bundle bun = new Bundle();
-            bun.putInt("hiddenkeuze",keuze);
+        //TextView hiddentext = (TextView) getView().findViewById(R.id.hiddenkeuze);
+        //String text = hiddentext.getText().toString();
+        //if(text != ""){
+        //int keuze = Integer.valueOf(text);
+        //Bundle bun = new Bundle();
+        //bun.putInt("hiddenkeuze",keuze);
             ZegHetZelfFragment zhz = new ZegHetZelfFragment();
-            zhz.setArguments(bun);
+        //zhz.setArguments(bun);
             FragmentTransaction tx = getFragmentManager().beginTransaction();
             tx.replace(R.id.flContent, zhz);
             tx.commit();
-        }else
-        {
-            Toast.makeText(getActivity(), "Selecteer eerst wat je wil oefenen!", Toast.LENGTH_LONG).show();
-        }
+        //}else
+        //{
+        //Toast.makeText(getActivity(), "Selecteer eerst wat je wil oefenen!", Toast.LENGTH_LONG).show();
+        //}
 
     }
 

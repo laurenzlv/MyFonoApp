@@ -3,7 +3,7 @@
     package="be.thomasmore.myfonoapp">
 
 
-    <uses-sdk android:minSdkVersion="15" />
+    <!--<uses-sdk android:minSdkVersion="15" />-->
 
     <application
         android:allowBackup="true"
