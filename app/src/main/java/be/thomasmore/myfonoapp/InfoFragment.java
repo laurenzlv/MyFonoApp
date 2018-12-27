@@ -61,9 +61,6 @@ public class InfoFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        String keuze = pref.getString("keuze", "");
-        Toast.makeText(getActivity(),keuze, Toast.LENGTH_SHORT).show();
     }
 
     @Override

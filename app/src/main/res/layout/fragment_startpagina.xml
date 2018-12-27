@@ -55,6 +55,12 @@
             />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/hiddenkeuze"
+            android:layout_below="@id/btnspel2"
+            android:visibility="invisible"/>
 
     </RelativeLayout>
 </FrameLayout>

@@ -1,6 +1,7 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -60,12 +61,12 @@ public class LuisterGoedFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
 
     }
 
@@ -76,35 +77,103 @@ public class LuisterGoedFragment extends Fragment {
         final View RootView = inflater.inflate(R.layout.fragment_luister_goed, container, false);
 
 
+
         playbtn = (ImageButton) RootView.findViewById(R.id.play);
         pausebtn = (ImageButton) RootView.findViewById(R.id.pause);
         stopbtn = (ImageButton) RootView.findViewById(R.id.stopp);
 
         playbtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                //OnCLick Stuff
-                Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
+
+                setAudioFile();
 
             }
         });
 
         pausebtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                //OnCLick Stuff
-                Toast.makeText(getActivity(), "pause", Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(getActivity(), "pause", Toast.LENGTH_SHORT).show();
+                if (player != null){
+                    player.pause();
+                }
             }
         });
 
         stopbtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
-                //OnCLick Stuff
-                Toast.makeText(getActivity(), "stop", Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(getActivity(), "stop", Toast.LENGTH_SHORT).show();
+                stopPlayer();
             }
         });
 
+
         return RootView;
+    }
+
+    private void setAudioFile(){
+
+        int keuze = 0;
+        Bundle bun = getArguments();
+        if(bun != null) {
+            keuze = bun.getInt("hiddenkeuze");
+        }
+
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int keuzeId = pref.getInt("keuze",0); //hier keuze uit localstorage VAN id geen text.string want 2 x K-T
+
+        switch (keuzeId) {
+            case 2131230874:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
+                break;
+            case 2131230872:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
+                break;
+            case 2131230876:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks5);
+                break;
+            case 2131230875:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks1);
+                break;
+            case 2131230873:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
+                break;
+            case 2131230877:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks2);
+                break;
+            case 2131230871:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks9);
+                break;
+            case 2131230878:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks6);
+                break;
+            case 2131230870:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
+                break;
+            case 2131230879:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks7en8);
+                break;
+            default: player = MediaPlayer.create(getView().getContext(), R.raw.fout);
+                break;
+        }
+
+        Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
+        if (player == null){
+            Toast.makeText(getActivity(), "player=null", Toast.LENGTH_SHORT).show();
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stopPlayer();
+                }
+            });
+        }
+        player.start();
+    }
+
+    private void stopPlayer(){
+        if (player != null){
+            player.release();
+            player = null;
+        }
+
+
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        stopPlayer();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
