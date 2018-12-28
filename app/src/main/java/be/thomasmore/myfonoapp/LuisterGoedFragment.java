@@ -2,6 +2,7 @@ package be.thomasmore.myfonoapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -36,6 +38,7 @@ public class LuisterGoedFragment extends Fragment {
     ImageButton playbtn;
     ImageButton pausebtn;
     ImageButton stopbtn;
+    ImageView oorbtn;
 
     public LuisterGoedFragment() {
         // Required empty public constructor
@@ -71,27 +74,48 @@ public class LuisterGoedFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View RootView = inflater.inflate(R.layout.fragment_luister_goed, container, false);
-
 
 
         playbtn = (ImageButton) RootView.findViewById(R.id.play);
         pausebtn = (ImageButton) RootView.findViewById(R.id.pause);
         stopbtn = (ImageButton) RootView.findViewById(R.id.stopp);
+        oorbtn = (ImageView) RootView.findViewById(R.id.oor);
+
 
         playbtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
 
-                if (player == null){
-                    setAudioFile();
-                }else
-                {
-                    player.start();
-                }
 
+                    if (player == null){
+                        player = MediaPlayer.create(getView().getContext(), R.raw.instructie);
+                        player.start();
+                    }else
+                    {
+                        player.start();
+                    }
+
+            }
+        });
+
+        oorbtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view) {
+
+                AudioManager audioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
+
+                if(player != null){
+                    setAudioFile();
+                }
+                else{
+                    if(audioManager.isWiredHeadsetOn()){
+                        player = new MediaPlayer();
+                        setAudioFile();
+                    }else{
+                        Toast.makeText(getActivity(), "Maak gebruik van een koptelefoon of oortjes", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 
@@ -119,6 +143,9 @@ public class LuisterGoedFragment extends Fragment {
 
     private void setAudioFile(){
 
+
+        AudioManager audioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
+
         int keuze = 0;
         Bundle bun = getArguments();
         if(bun != null) {
@@ -128,42 +155,56 @@ public class LuisterGoedFragment extends Fragment {
         SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
         int keuzeId = pref.getInt("keuze",0); //hier keuze uit localstorage VAN id geen text.string want 2 x K-T
 
-        switch (keuzeId) {
-            case 2131230874:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
-                break;
-            case 2131230872:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
-                break;
-            case 2131230876:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks5);
-                break;
-            case 2131230875:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks1);
-                break;
-            case 2131230873:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
-                break;
-            case 2131230877:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks2);
-                break;
-            case 2131230871:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks9);
-                break;
-            case 2131230878:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks6);
-                break;
-            case 2131230870:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
-                break;
-            case 2131230879:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks7en8);
-                break;
-            default: player = MediaPlayer.create(getView().getContext(), R.raw.fout);
-                break;
+        if (player.isPlaying() == false && audioManager.isWiredHeadsetOn()){
+            switch (keuzeId) {
+                case 2131230874:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
+                    break;
+                case 2131230872:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
+                    break;
+                case 2131230876:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks5);
+                    break;
+                case 2131230875:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks1);
+                    break;
+                case 2131230873:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
+                    break;
+                case 2131230877:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks2);
+                    break;
+                case 2131230871:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks9);
+                    break;
+                case 2131230878:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks6);
+                    break;
+                case 2131230870:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
+                    break;
+                case 2131230879:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks7en8);
+                    break;
+                default: player = MediaPlayer.create(getView().getContext(), R.raw.fout);
+                    break;
+
+            }
+
+            Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
+            if (player == null){
+                Toast.makeText(getActivity(), "player=null", Toast.LENGTH_SHORT).show();
+                player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        stopPlayer();
+                    }
+                });
+            }
+            player.start();
+        }else
+        {
+            Toast.makeText(getActivity(), "Maak gebruik van een koptelefoon of oortjes", Toast.LENGTH_LONG).show();
         }
 
-        Toast.makeText(getActivity(), "play", Toast.LENGTH_SHORT).show();
-        if (player == null){
-            Toast.makeText(getActivity(), "player=null", Toast.LENGTH_SHORT).show();
-            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    stopPlayer();
-                }
-            });
-        }
-        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                stopPlayer();
+            }
+        });
+
     }
 
     private void stopPlayer(){
