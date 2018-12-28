@@ -91,10 +91,10 @@ public class StartpaginaFragment extends Fragment {
         if (keuzeId == 0){
             btnLuisterGoed.setEnabled(false);
             btnZegZelf.setEnabled(false);
-            btnLuisterGoed.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimaryDark),
-                    PorterDuff.Mode.SRC_ATOP);
-            btnZegZelf.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimaryDark),
-                    PorterDuff.Mode.SRC_ATOP);
+
+
+            btnZegZelf.getBackground().setAlpha(64);
+            btnLuisterGoed.getBackground().setAlpha(64);
         }
 
         Bundle bun = getArguments();

@@ -106,8 +106,7 @@ public class KeuzeFragment extends Fragment {
 
         Button btnKeuzeOpslaan = (Button) RootView.findViewById(R.id.btnKeuzeOpslaan);
         btnKeuzeOpslaan.setEnabled(false);
-        btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimaryDark),
-                PorterDuff.Mode.SRC_ATOP);
+        btnKeuzeOpslaan.getBackground().setAlpha(64);
 
 
         btnKeuzeOpslaan.setOnClickListener(new View.OnClickListener()
@@ -145,8 +144,7 @@ public class KeuzeFragment extends Fragment {
 
             Button btnKeuzeOpslaan = (Button) getView().findViewById(R.id.btnKeuzeOpslaan);
             btnKeuzeOpslaan.setEnabled(true);
-            btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent),
-                    PorterDuff.Mode.SRC_ATOP);
+            btnKeuzeOpslaan.getBackground().setAlpha(255);
 
         }
     };
@@ -158,8 +156,7 @@ public class KeuzeFragment extends Fragment {
 
             Button btnKeuzeOpslaan = (Button) getView().findViewById(R.id.btnKeuzeOpslaan);
             btnKeuzeOpslaan.setEnabled(true);
-            btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent),
-                    PorterDuff.Mode.SRC_ATOP);
+            btnKeuzeOpslaan.getBackground().setAlpha(255);
         }
     };
     private RadioGroup.OnCheckedChangeListener mRG2Listener = new RadioGroup.OnCheckedChangeListener()
@@ -170,8 +167,7 @@ public class KeuzeFragment extends Fragment {
 
             Button btnKeuzeOpslaan = (Button) getView().findViewById(R.id.btnKeuzeOpslaan);
             btnKeuzeOpslaan.setEnabled(true);
-            btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent),
-                    PorterDuff.Mode.SRC_ATOP);
+            btnKeuzeOpslaan.getBackground().setAlpha(255);
 
         }
     };
@@ -183,8 +179,7 @@ public class KeuzeFragment extends Fragment {
 
             Button btnKeuzeOpslaan = (Button) getView().findViewById(R.id.btnKeuzeOpslaan);
             btnKeuzeOpslaan.setEnabled(true);
-            btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent),
-                    PorterDuff.Mode.SRC_ATOP);
+            btnKeuzeOpslaan.getBackground().setAlpha(255);
         }
     };
 
