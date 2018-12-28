@@ -1,6 +1,8 @@
 package be.thomasmore.myfonoapp;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivityNav extends AppCompatActivity
@@ -41,6 +44,12 @@ public class MainActivityNav extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        //keuze op 0 zetten bij het starten van app
+        SharedPreferences pref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+        edt.putInt("keuze", 0);
+        edt.commit();
 
 
 

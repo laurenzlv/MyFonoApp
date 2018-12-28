@@ -3,6 +3,8 @@ package be.thomasmore.myfonoapp;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -84,16 +86,29 @@ public class KeuzeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
-
     }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        //localstorage opslaan van keuze
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor edt = pref.edit();
+        edt.putInt("keuze", 0);
+        edt.commit();
+
+
+
         final View RootView = inflater.inflate(R.layout.fragment_keuze, container, false);
 
         Button btnKeuzeOpslaan = (Button) RootView.findViewById(R.id.btnKeuzeOpslaan);
+        btnKeuzeOpslaan.setEnabled(false);
+        btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorPrimaryDark),
+                PorterDuff.Mode.SRC_ATOP);
+
 
         btnKeuzeOpslaan.setOnClickListener(new View.OnClickListener()
         {
@@ -103,6 +118,9 @@ public class KeuzeFragment extends Fragment {
                 naarStartPagina(v);
             }
         });
+
+        //btnKeuzeOpslaan.setEnabled(false);
+        //btnKeuzeOpslaan.setBackgroundColor(Color.parseColor("#4f5968"));
 
         g1= RootView.findViewById(R.id.g1);
         g2= RootView.findViewById(R.id.g2);
@@ -125,6 +143,11 @@ public class KeuzeFragment extends Fragment {
             uncheckOtherRadioGroups(g2,g1,g4);
             //clearPrefAndUpdate();
 
+            Button btnKeuzeOpslaan = (Button) getView().findViewById(R.id.btnKeuzeOpslaan);
+            btnKeuzeOpslaan.setEnabled(true);
+            btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent),
+                    PorterDuff.Mode.SRC_ATOP);
+
         }
     };
     private RadioGroup.OnCheckedChangeListener mRG1Listener = new RadioGroup.OnCheckedChangeListener()
@@ -132,6 +155,11 @@ public class KeuzeFragment extends Fragment {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             uncheckOtherRadioGroups(g2,g3,g4);
             //clearPrefAndUpdate();
+
+            Button btnKeuzeOpslaan = (Button) getView().findViewById(R.id.btnKeuzeOpslaan);
+            btnKeuzeOpslaan.setEnabled(true);
+            btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent),
+                    PorterDuff.Mode.SRC_ATOP);
         }
     };
     private RadioGroup.OnCheckedChangeListener mRG2Listener = new RadioGroup.OnCheckedChangeListener()
@@ -139,6 +167,12 @@ public class KeuzeFragment extends Fragment {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             uncheckOtherRadioGroups(g3,g1,g4);
             //clearPrefAndUpdate();
+
+            Button btnKeuzeOpslaan = (Button) getView().findViewById(R.id.btnKeuzeOpslaan);
+            btnKeuzeOpslaan.setEnabled(true);
+            btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent),
+                    PorterDuff.Mode.SRC_ATOP);
+
         }
     };
     private RadioGroup.OnCheckedChangeListener mRG4Listener = new RadioGroup.OnCheckedChangeListener()
@@ -146,6 +180,11 @@ public class KeuzeFragment extends Fragment {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             uncheckOtherRadioGroups(g2,g1,g3);
             //clearPrefAndUpdate();
+
+            Button btnKeuzeOpslaan = (Button) getView().findViewById(R.id.btnKeuzeOpslaan);
+            btnKeuzeOpslaan.setEnabled(true);
+            btnKeuzeOpslaan.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent),
+                    PorterDuff.Mode.SRC_ATOP);
         }
     };
 
@@ -173,10 +212,7 @@ public class KeuzeFragment extends Fragment {
         g4.setOnCheckedChangeListener(mRG4Listener);
     }
 
-    public void keuzeOpslaan(View v){
-        // KEUZE OPSLAAN
-        //ALS SESSION VARIABLE
-    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -271,6 +307,7 @@ public class KeuzeFragment extends Fragment {
 
         return checkedRadioButton.getId();
     }
+
 
 
 
