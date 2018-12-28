@@ -1,12 +1,17 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.CompoundButtonCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -79,6 +84,18 @@ public class StartpaginaFragment extends Fragment {
         Button btnLuisterGoed = (Button) view.findViewById(R.id.btnspel1);
         Button btnZegZelf = (Button) view.findViewById(R.id.btnspel2);
         TextView hiddentext = (TextView) view.findViewById(R.id.hiddenkeuze);
+
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int keuzeId = pref.getInt("keuze",0);
+
+        if (keuzeId == 0){
+            btnLuisterGoed.setEnabled(false);
+            btnZegZelf.setEnabled(false);
+
+
+            btnZegZelf.getBackground().setAlpha(64);
+            btnLuisterGoed.getBackground().setAlpha(64);
+        }
 
         Bundle bun = getArguments();
         if(bun != null) {
