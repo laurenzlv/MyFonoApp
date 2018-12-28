@@ -85,7 +85,12 @@ public class LuisterGoedFragment extends Fragment {
         playbtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view) {
 
-                setAudioFile();
+                if (player == null){
+                    setAudioFile();
+                }else
+                {
+                    player.start();
+                }
 
             }
         });
