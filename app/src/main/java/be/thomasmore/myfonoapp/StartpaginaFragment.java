@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -85,6 +86,7 @@ public class StartpaginaFragment extends Fragment {
         Button btnZegZelf = (Button) view.findViewById(R.id.btnspel2);
         TextView hiddentext = (TextView) view.findViewById(R.id.hiddenkeuze);
 
+
         SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
         int keuzeId = pref.getInt("keuze",0);
 
@@ -95,6 +97,7 @@ public class StartpaginaFragment extends Fragment {
 
             btnZegZelf.getBackground().setAlpha(64);
             btnLuisterGoed.getBackground().setAlpha(64);
+
         }
 
         Bundle bun = getArguments();
