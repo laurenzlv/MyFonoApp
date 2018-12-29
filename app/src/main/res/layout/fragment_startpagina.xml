@@ -5,21 +5,24 @@
     android:layout_height="match_parent"
     tools:context=".StartpaginaFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingLeft="18dp"
         android:paddingTop="18dp"
         android:paddingRight="18dp">
 
-        <TextView
-            android:id="@+id/welkom"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:text="@string/welkom"
-            android:textSize="18sp" />
 
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:src="@mipmap/settings"
+            android:id="@+id/image1"
+            android:contentDescription="@string/app_name"/>
         <Button
             android:id="@+id/btninstelling"
             android:layout_width="match_parent"
@@ -29,8 +32,17 @@
             android:backgroundTint="@color/colorAccent"
             android:textColor="@android:color/background_light"
             tools:targetApi="lollipop"
-            android:layout_below="@id/welkom"
+            android:layout_below="@id/image1"
             />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@mipmap/oor"
+            android:layout_below="@id/btninstelling"
+            android:id="@+id/image2"
+            android:contentDescription="@string/app_name"/>
         <Button
             android:id="@+id/btnspel1"
             android:layout_width="match_parent"
@@ -40,8 +52,17 @@
             android:backgroundTint="@color/colorAccent"
             android:textColor="@android:color/background_light"
             tools:targetApi="lollipop"
-            android:layout_below="@id/btninstelling"
+            android:layout_below="@id/image2"
             />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@mipmap/varken"
+            android:layout_below="@id/btnspel1"
+            android:id="@+id/image3"
+            android:contentDescription="@string/app_name"/>
+
         <Button
             android:id="@+id/btnspel2"
             android:layout_width="match_parent"
@@ -51,7 +72,7 @@
             android:backgroundTint="@color/colorAccent"
             android:textColor="@android:color/background_light"
             tools:targetApi="lollipop"
-            android:layout_below="@id/btnspel1"
+            android:layout_below="@id/image3"
             />
 
 
@@ -63,4 +84,5 @@
             android:visibility="invisible"/>
 
     </RelativeLayout>
+    </ScrollView>
 </FrameLayout>
