@@ -34,6 +34,7 @@
     <string name="medaillemuur">Medaillemuur</string>
     <string name="front">Fronting: Het kind spreekt een klank, die vanachter in de mond uitgesproken moet worden (bv: /k/), vooraan in de mond uit (bv: /t/). Bv: toe i.p.v. koe</string>
     <string name="info">Info</string>
+    <string name="oefenen">Op deze woordjes gaan we oefenen!</string>
     <string name="fin">Finaal: achteraan het woord.</string>
     <string name="ini">Initiaal: vooraan het woord</string>
     <string name="stop">Stopping: Het kind ‘stopt’ een klank die je normaal gezien lang moet aanhouden (bv: /s/). Bv: kat i.p.v. gat</string>
