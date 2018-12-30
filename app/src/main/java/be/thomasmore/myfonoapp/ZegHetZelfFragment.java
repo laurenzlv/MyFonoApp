@@ -206,25 +206,25 @@ public class ZegHetZelfFragment extends Fragment {
         int keuzeId = pref.getInt("keuze",0);
 
             switch (keuzeId) {
-                case 2131230874: list = listGSV;
+                case 2131230893: list = listGSV;
                     break;
-                case 2131230872: list = listGK;
+                case 2131230891: list = listGK;
                     break;
-                case 2131230876: list = listKTI;
+                case 2131230895: list = listKTI;
                     break;
-                case 2131230875: list = listKTF;
+                case 2131230894: list = listKTF;
                     break;
-                case 2131230873: list = listGS;
+                case 2131230892: list = listGS;
                     break;
-                case 2131230877: list = listNGN;
+                case 2131230896: list = listNGN;
                     break;
-                case 2131230871: list = listFT;
+                case 2131230890: list = listFT;
                     break;
-                case 2131230878: list = listST;
+                case 2131230897: list = listST;
                     break;
-                case 2131230870: list = listCHT;
+                case 2131230889: list = listCHT;
                     break;
-                case 2131230879: list = listSZT;
+                case 2131230898: list = listSZT;
                     break;
                 default: list = listSZT;
                     break;
