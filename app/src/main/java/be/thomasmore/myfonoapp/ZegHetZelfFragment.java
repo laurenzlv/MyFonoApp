@@ -1,16 +1,31 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -37,6 +52,7 @@ public class ZegHetZelfFragment extends Fragment {
     List<Klank> listGK;
     List<Klank> listSZT;
     List<Klank> listFT;
+    MediaPlayer player;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -80,10 +96,58 @@ public class ZegHetZelfFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        View view = inflater.inflate(R.layout.fragment_zeg_het_zelf, container, false);
+
+        ListView lv = (ListView) view.findViewById(R.id.lv);
+        Button btnSpelKnop = (Button) view.findViewById(R.id.knopspel);
         loadKlanken();
 
+        final List<Klank> list = getList();
+        final List<String> listwoorden = new ArrayList<>();
 
-        return inflater.inflate(R.layout.fragment_zeg_het_zelf, container, false);
+        for(int i = 0; i < list.size() ; i++){
+            String woord = list.get(i).getWoord();
+            listwoorden.add(woord);
+        }
+        ArrayAdapter<String> listViewAdapter = new ArrayAdapter<>(
+                getActivity(),
+                android.R.layout.simple_list_item_1,
+                listwoorden
+        );
+
+        lv.setAdapter(listViewAdapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                player = new MediaPlayer();
+                String afb = list.get(position).getAfbeelding();
+                String audiofile = list.get(position).getWoord();
+                Toast ImageToast = new Toast(getContext());
+                ImageView image = new ImageView(getContext());
+
+                image.setImageResource(getImageId(afb));
+                ImageToast.setView(image);
+                ImageToast.setDuration(Toast.LENGTH_LONG); // afbeelding misschien andere map ipv drawable?
+                ImageToast.show();
+
+                player = MediaPlayer.create(getContext(),getAudiofileId(audiofile));
+                player.start();
+            }
+        });
+
+        btnSpelKnop.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                FragmentTransaction tx = getFragmentManager().beginTransaction();
+                tx.replace(R.id.flContent, new SpelFragment());
+                tx.commit();
+            }
+        });
+
+        return view;
 
 
     }
@@ -93,6 +157,14 @@ public class ZegHetZelfFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    public int getAudiofileId(String filename) {
+        return getContext().getResources().getIdentifier("raw/" + filename, null, getContext().getPackageName());
+    }
+
+    public int getImageId(String imageName) {
+        return getContext().getResources().getIdentifier("drawable/" + imageName, null, getContext().getPackageName());
     }
 
     @Override
@@ -125,6 +197,41 @@ public class ZegHetZelfFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public List<Klank> getList(){
+
+        List<Klank> list = new ArrayList<>();
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int keuzeId = pref.getInt("keuze",0);
+
+            switch (keuzeId) {
+                case 2131230874: list = listGSV;
+                    break;
+                case 2131230872: list = listGK;
+                    break;
+                case 2131230876: list = listKTI;
+                    break;
+                case 2131230875: list = listKTF;
+                    break;
+                case 2131230873: list = listGS;
+                    break;
+                case 2131230877: list = listNGN;
+                    break;
+                case 2131230871: list = listFT;
+                    break;
+                case 2131230878: list = listST;
+                    break;
+                case 2131230870: list = listCHT;
+                    break;
+                case 2131230879: list = listSZT;
+                    break;
+                default: list = listSZT;
+                    break;
+
+            }
+
+            return list;
     }
 
     public void loadKlanken(){
