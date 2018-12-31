@@ -1,6 +1,7 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
@@ -28,11 +29,20 @@ public class SpelFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    List<Klank> listKTF;
+    List<Klank> listGS;
+    List<Klank> listNGN;
+    List<Klank> listKTI;
+    List<Klank> listGSV;
+    List<Klank> listST;
+    List<Klank> listCHT;
+    List<Klank> listGK;
+    List<Klank> listSZT;
+    List<Klank> listFT;
     private String mParam1;
     private String mParam2;
     private OnFragmentInteractionListener mListener;
-    List<Klank> listGSV = new ArrayList<>();
+    List<Klank> spelList = new ArrayList<>();
     ImageView img1;
     ImageView img2;
     ImageView img3;
@@ -81,6 +91,7 @@ public class SpelFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View RootView = inflater.inflate(R.layout.fragment_spel, container, false);
         loadlist();
+        spelList = getList();
 
         img1 = RootView.findViewById(R.id.img1);
         img2 = RootView.findViewById(R.id.img2);
@@ -108,12 +119,12 @@ public class SpelFragment extends Fragment {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img1.setImageResource(getImageId(image));
 
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
                 latestClickednr = 1;
                 setKeuze(lukraak,lukr);
 
@@ -123,12 +134,12 @@ public class SpelFragment extends Fragment {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img2.setImageResource(getImageId(image));
 
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
                 latestClickednr = 2;
                 setKeuze(lukraak,lukr);
 
@@ -138,12 +149,12 @@ public class SpelFragment extends Fragment {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img3.setImageResource(getImageId(image));
 
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
                 latestClickednr = 3;
                 setKeuze(lukraak,lukr);
 
@@ -153,12 +164,12 @@ public class SpelFragment extends Fragment {
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img4.setImageResource(getImageId(image));
 
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
                 latestClickednr = 4;
                 setKeuze(lukraak,lukr);
 
@@ -168,12 +179,12 @@ public class SpelFragment extends Fragment {
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img5.setImageResource(getImageId(image));
 
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
                 latestClickednr = 5;
                 setKeuze(lukraak,lukr);
 
@@ -183,12 +194,12 @@ public class SpelFragment extends Fragment {
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img6.setImageResource(getImageId(image));
 
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
                 latestClickednr = 6;
                 setKeuze(lukraak,lukr);
 
@@ -198,12 +209,12 @@ public class SpelFragment extends Fragment {
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img7.setImageResource(getImageId(image));
                 latestClickednr = 7;
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
 
                 setKeuze(lukraak,lukr);
 
@@ -213,12 +224,12 @@ public class SpelFragment extends Fragment {
         img8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img8.setImageResource(getImageId(image));
 
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
                 latestClickednr = 8;
                 setKeuze(lukraak,lukr);
 
@@ -228,12 +239,12 @@ public class SpelFragment extends Fragment {
         img9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int lukraak = (int) (Math.random()*5);
+                int lukraak = (int) (Math.random()*spelList.size());
                 int lukr = (int) (Math.random()*2)+1;
-                String image = listGSV.get(lukraak).getAfbeelding();
+                String image = spelList.get(lukraak).getAfbeelding();
                 img9.setImageResource(getImageId(image));
 
-                latestClicked = listGSV.get(lukraak).getAfbeelding();
+                latestClicked = spelList.get(lukraak).getAfbeelding();
                 latestClickednr = 9;
                 setKeuze(lukraak,lukr);
 
@@ -368,40 +379,40 @@ public class SpelFragment extends Fragment {
 
     public void setKeuze(int lukraak, int lukr){
 
-        for(int i = 0; i < listGSV.size() ; i++){
+        for(int i = 0; i < spelList.size() ; i++){
 
-            if(listGSV.get(i).getPaar() == listGSV.get(lukraak).getPaar())
-                if(listGSV.get(i).getId() != listGSV.get(lukraak).getId()) {
+            if(spelList.get(i).getPaar() == spelList.get(lukraak).getPaar())
+                if(spelList.get(i).getId() != spelList.get(lukraak).getId()) {
                     if (lukr == 1) {
-                        img10.setImageResource(getImageId(listGSV.get(i).getAfbeelding()));
-                        img11.setImageResource(getImageId(listGSV.get(lukraak).getAfbeelding()));
+                        img10.setImageResource(getImageId(spelList.get(i).getAfbeelding()));
+                        img11.setImageResource(getImageId(spelList.get(lukraak).getAfbeelding()));
 
-                        latestKeuzeLinks = listGSV.get(i).getAfbeelding();
-                        latestKeuzeRechts = listGSV.get(lukraak).getAfbeelding();
+                        latestKeuzeLinks = spelList.get(i).getAfbeelding();
+                        latestKeuzeRechts = spelList.get(lukraak).getAfbeelding();
 
                     } else {
-                        img10.setImageResource(getImageId(listGSV.get(lukraak).getAfbeelding()));
-                        img11.setImageResource(getImageId(listGSV.get(i).getAfbeelding()));
+                        img10.setImageResource(getImageId(spelList.get(lukraak).getAfbeelding()));
+                        img11.setImageResource(getImageId(spelList.get(i).getAfbeelding()));
 
-                        latestKeuzeRechts = listGSV.get(i).getAfbeelding();
-                        latestKeuzeLinks = listGSV.get(lukraak).getAfbeelding();
+                        latestKeuzeRechts = spelList.get(i).getAfbeelding();
+                        latestKeuzeLinks = spelList.get(lukraak).getAfbeelding();
                     }
                 }else
                 {
-                    for(int b = 0; b < listGSV.size() ; b++){
-                        if(listGSV.get(b).getPaar() == listGSV.get(lukraak).getPaar() && listGSV.get(b).getId() != listGSV.get(lukraak).getId()){
+                    for(int b = 0; b < spelList.size() ; b++){
+                        if(spelList.get(b).getPaar() == spelList.get(lukraak).getPaar() && spelList.get(b).getId() != spelList.get(lukraak).getId()){
                             if (lukr == 1) {
-                                img10.setImageResource(getImageId(listGSV.get(b).getAfbeelding()));
-                                img11.setImageResource(getImageId(listGSV.get(lukraak).getAfbeelding()));
+                                img10.setImageResource(getImageId(spelList.get(b).getAfbeelding()));
+                                img11.setImageResource(getImageId(spelList.get(lukraak).getAfbeelding()));
 
-                                latestKeuzeLinks = listGSV.get(b).getAfbeelding();
-                                latestKeuzeRechts = listGSV.get(lukraak).getAfbeelding();
+                                latestKeuzeLinks = spelList.get(b).getAfbeelding();
+                                latestKeuzeRechts = spelList.get(lukraak).getAfbeelding();
                             } else {
-                                img10.setImageResource(getImageId(listGSV.get(lukraak).getAfbeelding()));
-                                img11.setImageResource(getImageId(listGSV.get(b).getAfbeelding()));
+                                img10.setImageResource(getImageId(spelList.get(lukraak).getAfbeelding()));
+                                img11.setImageResource(getImageId(spelList.get(b).getAfbeelding()));
 
-                                latestKeuzeRechts = listGSV.get(b).getAfbeelding();
-                                latestKeuzeLinks = listGSV.get(lukraak).getAfbeelding();
+                                latestKeuzeRechts = spelList.get(b).getAfbeelding();
+                                latestKeuzeLinks = spelList.get(lukraak).getAfbeelding();
                             }
                         }
                     }
@@ -414,6 +425,16 @@ public class SpelFragment extends Fragment {
     }
 
     public void loadlist(){
+        listFT = new ArrayList<>();
+        listSZT = new ArrayList<>();
+        listGK = new ArrayList<>();
+        listCHT = new ArrayList<>();
+        listST = new ArrayList<>();
+        listKTI = new ArrayList<>();
+        listKTF = new ArrayList<>();
+        listNGN = new ArrayList<>();
+        listGS = new ArrayList<>();
+        listGSV = new ArrayList<>();
 
         //listGSV.add(new Klank("gat","gat"));
         listGSV.add(new Klank(0,"goud","goud",1));
@@ -422,6 +443,63 @@ public class SpelFragment extends Fragment {
         listGSV.add(new Klank(3,"voet","tekeningvoet",2));
         listGSV.add(new Klank(4,"guus","tekeningguus",3));
         listGSV.add(new Klank(5,"suus","tekeningsuus",3));
+
+
+        listKTF.add(new Klank(0,"bad","tekeningbad",1));
+        listKTF.add(new Klank(1,"bak","tekeningbak",1));
+        //listKTF.add(new Klank(2,"bed","tekeningbed"));
+        listKTF.add(new Klank(3,"net","tekeningnet2",2));
+        listKTF.add(new Klank(4,"nek","tekeningnek",2));
+
+        listGS.add(new Klank(0,"buig","tekeningbuig",1));
+        listGS.add(new Klank(1,"buis","tekeningbuis",1));
+        listGS.add(new Klank(2,"dag","tekeningdag",2));
+        listGS.add(new Klank(3,"das","stropdas",2));
+        listGS.add(new Klank(4,"leeg","tekeningleeg",3));
+        listGS.add(new Klank(5,"lees","tekeninglees",3));
+
+        listNGN.add(new Klank(0,"pan","tekeningpan",1));
+        listNGN.add(new Klank(1,"pang","tekeningpang",1));
+        listNGN.add(new Klank(2,"ton","tekenington",2));
+        listNGN.add(new Klank(3,"tong","tekeningtong",2));
+
+        listKTI.add(new Klank(0,"kam","tekeningkam",1));
+        listKTI.add(new Klank(1,"tam","tam",1));
+        listKTI.add(new Klank(2,"koe","tekeningkoe",2));
+        listKTI.add(new Klank(3,"toe","tekeningtoe",2));
+        listKTI.add(new Klank(4,"kou","kou",3));
+        listKTI.add(new Klank(5,"touw","tekeningtouw",3));
+
+        listST.add(new Klank(0,"boos","tekeningboos",1));
+        listST.add(new Klank(1,"boot","tekeningboot",1));
+        listST.add(new Klank(2,"bos","tekeningbos",2));
+        listST.add(new Klank(3,"bot","tekeningbot",2));
+        //listST.add(new Klank("das","stropdas"));
+
+        //listCHT.add(new Klank("buig","tekeningbuig"));
+        //listCHT.add(new Klank("dag","tekeningdag"));
+        //listCHT.add(new Klank("leeg","tekeningleeg"));
+        listCHT.add(new Klank(0,"pech","pech",1));
+        listCHT.add(new Klank(1,"pet","pet",1));
+
+        listGK.add(new Klank(0,"gat","gat",1));
+        //listGK.add(new Klank("guus","tekeningguus"));
+        //listGK.add(new Klank("goed","tekeninggoed"));
+        listGK.add(new Klank(1,"kat","kat",1));
+        //listGK.add(new Klank("goud","goud"));
+
+        listSZT.add(new Klank(0,"sok","tekeningsok",1));
+        listSZT.add(new Klank(1,"tok","tok",1));
+        //listSZT.add(new Klank("suus","tekeningsuus"));
+        listSZT.add(new Klank(2,"zak","tekeningzak",2));
+        listSZT.add(new Klank(3,"tak","tekeningtak",2));
+
+
+        listFT.add(new Klank(0,"fee","fee",1));
+        listFT.add(new Klank(1,"thee","tekeningthee",1));
+        listFT.add(new Klank(2,"fien","tekeningfien",2));
+        //listFT.add(new Klank("fout","tekeningfout"));
+        listFT.add(new Klank(3,"tien","tien",2));
 
     }
     // TODO: Rename method, update argument and hook method into UI event
@@ -452,5 +530,40 @@ public class SpelFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public List<Klank> getList(){
+
+        List<Klank> list;
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int keuzeId = pref.getInt("keuze",0);
+
+        switch (keuzeId) {
+            case 2131230893: list = listGSV;
+                break;
+            case 2131230891: list = listGK;
+                break;
+            case 2131230895: list = listKTI;
+                break;
+            case 2131230894: list = listKTF;
+                break;
+            case 2131230892: list = listGS;
+                break;
+            case 2131230896: list = listNGN;
+                break;
+            case 2131230890: list = listFT;
+                break;
+            case 2131230897: list = listST;
+                break;
+            case 2131230889: list = listCHT;
+                break;
+            case 2131230898: list = listSZT;
+                break;
+            default: list = listSZT;
+                break;
+
+        }
+
+        return list;
     }
 }
