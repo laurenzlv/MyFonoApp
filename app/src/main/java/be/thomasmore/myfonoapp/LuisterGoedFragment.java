@@ -78,6 +78,8 @@ public class LuisterGoedFragment extends Fragment {
         // Inflate the layout for this fragment
         final View RootView = inflater.inflate(R.layout.fragment_luister_goed, container, false);
 
+        getActivity().setTitle("Luister goed");
+
 
         playbtn = (ImageButton) RootView.findViewById(R.id.play);
         pausebtn = (ImageButton) RootView.findViewById(R.id.pause);
