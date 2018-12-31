@@ -5,10 +5,42 @@
     android:layout_height="match_parent"
     tools:context=".ZegHetZelfFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <TextView
+        android:id="@+id/oefenen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="@string/oefenen"
+        android:textSize="17sp"
+        android:padding="18dp"/>
 
+            <ListView
+                android:id="@+id/lv"
+                android:layout_width="match_parent"
+                android:layout_height="345dp"
+                android:paddingTop="20dp"
+                android:background="?android:attr/selectableItemBackground"
+
+                />
+
+    <Button
+        android:id="@+id/knopspel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="spel spelen"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/background_light"
+        tools:targetApi="lollipop"
+        android:layout_marginTop="20dp"
+        />
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>
