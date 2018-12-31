@@ -5,96 +5,55 @@
     android:layout_height="match_parent"
     tools:context=".MedaillemuurFragment">
 
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:orientation="vertical">
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        >
 
-        <TextView
-            android:id="@+id/spel1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnSpel1"
-            android:textSize="20sp"/>
 
         <ImageView
             android:id="@+id/gold"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="20dp"
-            android:src="@mipmap/gold"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:src="@drawable/supermedaille1"
             android:alpha="1"
             android:contentDescription="@string/btnSpel1"
             />
-        <ImageView
-            android:id="@+id/silver"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="20dp"
-            android:src="@mipmap/silver"
-            android:alpha="1"
-            android:contentDescription="@string/btnSpel1"
-            />
-        <ImageView
-            android:id="@+id/bronze"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="20dp"
-            android:src="@mipmap/bronze"
-            android:alpha="1"
-            android:contentDescription="@string/btnSpel1"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/spel2"
+            android:id="@+id/goud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btnSpel2"
-            android:textSize="20sp"/>
+            android:text="0"
+            android:textSize="50sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"/>
 
         <ImageView
-            android:id="@+id/gold2"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="20dp"
-            android:src="@mipmap/gold"
-            android:alpha=".05"
-            android:contentDescription="@string/btnSpel1"
-            />
-        <ImageView
-            android:id="@+id/silver2"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="20dp"
-            android:src="@mipmap/silver"
-            android:alpha=".05"
-            android:contentDescription="@string/btnSpel1"
-            />
-        <ImageView
-            android:id="@+id/bronze2"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="20dp"
-            android:src="@mipmap/bronze"
+            android:id="@+id/silver"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/minimedaille1"
             android:alpha="1"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/btnSpel1"
             />
+        <TextView
+            android:id="@+id/zilver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="50sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"/>
+
     </LinearLayout>
-    </LinearLayout>
+</ScrollView>
+
 </FrameLayout>
