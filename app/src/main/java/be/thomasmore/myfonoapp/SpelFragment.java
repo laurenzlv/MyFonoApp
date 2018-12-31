@@ -7,11 +7,15 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,9 +44,15 @@ public class SpelFragment extends Fragment {
     ImageView img9;
     ImageView img10;
     ImageView img11;
-    String latestClicked;
-    String latestKeuzeLinks;
-    String latestKeuzeRechts;
+    String latestClicked = "";
+    int latestClickednr;
+    String latestKeuzeLinks = "";
+    String latestKeuzeRechts = "";
+    int score = 0;
+    TextView tv;
+    int zilver;
+    int goud;
+    Button newgame;
 
     public SpelFragment() {
         // Required empty public constructor
@@ -83,7 +93,17 @@ public class SpelFragment extends Fragment {
         img9 = RootView.findViewById(R.id.img9);
         img10 = RootView.findViewById(R.id.img10);
         img11 = RootView.findViewById(R.id.img11);
+        tv = RootView.findViewById(R.id.scoreid);
+        newgame = RootView.findViewById(R.id.nieuwspel);
 
+        newgame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction tx = getFragmentManager().beginTransaction();
+                tx.replace(R.id.flContent, new SpelFragment());
+                tx.commit();
+            }
+        });
 
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +114,7 @@ public class SpelFragment extends Fragment {
                 img1.setImageResource(getImageId(image));
 
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
-
+                latestClickednr = 1;
                 setKeuze(lukraak,lukr);
 
             }
@@ -109,7 +129,7 @@ public class SpelFragment extends Fragment {
                 img2.setImageResource(getImageId(image));
 
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
-
+                latestClickednr = 2;
                 setKeuze(lukraak,lukr);
 
             }
@@ -124,7 +144,7 @@ public class SpelFragment extends Fragment {
                 img3.setImageResource(getImageId(image));
 
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
-
+                latestClickednr = 3;
                 setKeuze(lukraak,lukr);
 
             }
@@ -139,7 +159,7 @@ public class SpelFragment extends Fragment {
                 img4.setImageResource(getImageId(image));
 
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
-
+                latestClickednr = 4;
                 setKeuze(lukraak,lukr);
 
             }
@@ -154,7 +174,7 @@ public class SpelFragment extends Fragment {
                 img5.setImageResource(getImageId(image));
 
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
-
+                latestClickednr = 5;
                 setKeuze(lukraak,lukr);
 
             }
@@ -169,7 +189,7 @@ public class SpelFragment extends Fragment {
                 img6.setImageResource(getImageId(image));
 
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
-
+                latestClickednr = 6;
                 setKeuze(lukraak,lukr);
 
             }
@@ -182,7 +202,7 @@ public class SpelFragment extends Fragment {
                 int lukr = (int) (Math.random()*2)+1;
                 String image = listGSV.get(lukraak).getAfbeelding();
                 img7.setImageResource(getImageId(image));
-
+                latestClickednr = 7;
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
 
                 setKeuze(lukraak,lukr);
@@ -199,7 +219,7 @@ public class SpelFragment extends Fragment {
                 img8.setImageResource(getImageId(image));
 
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
-
+                latestClickednr = 8;
                 setKeuze(lukraak,lukr);
 
             }
@@ -214,7 +234,7 @@ public class SpelFragment extends Fragment {
                 img9.setImageResource(getImageId(image));
 
                 latestClicked = listGSV.get(lukraak).getAfbeelding();
-
+                latestClickednr = 9;
                 setKeuze(lukraak,lukr);
 
             }
@@ -225,15 +245,22 @@ public class SpelFragment extends Fragment {
             public void onClick(View v) {
                 MediaPlayer player;
 
+                if(!latestClicked.equals("")){
                 if(latestKeuzeLinks.equals(latestClicked))
                 {
                     player = MediaPlayer.create(getContext(),getAudiofileId("correct"));
                     player.start();
+                    score += 10;
+                    showScore();
                 }else
                 {
                     player = MediaPlayer.create(getContext(),getAudiofileId("incorrect"));
                     player.start();
+                    score -= 15;
+                    showScore();
+                    reset();
                 }
+            }
             }
         });
 
@@ -242,15 +269,22 @@ public class SpelFragment extends Fragment {
             public void onClick(View v) {
                 MediaPlayer player;
 
+                if(!latestClicked.equals("")){
                 if(latestClicked.equals(latestKeuzeRechts))
                 {
                     player = MediaPlayer.create(getContext(),getAudiofileId("correct"));
                     player.start();
+                    score += 10;
+                    showScore();
                 }else
                 {
                     player = MediaPlayer.create(getContext(),getAudiofileId("incorrect"));
                     player.start();
+                    score -= 15;
+                    showScore();
+                    reset();
                 }
+            }
             }
         });
 
@@ -258,6 +292,75 @@ public class SpelFragment extends Fragment {
         return RootView;
     }
 
+    public void reset(){
+        img10.setImageResource(getImageId("varken"));
+        img11.setImageResource(getImageId("varken"));
+        switch (latestClickednr) {
+            case 1: img1.setImageResource(getImageId("varken"));
+                break;
+            case 2: img2.setImageResource(getImageId("varken"));
+                break;
+            case 3: img3.setImageResource(getImageId("varken"));
+                break;
+            case 4: img4.setImageResource(getImageId("varken"));
+                break;
+            case 5: img5.setImageResource(getImageId("varken"));
+                break;
+            case 6: img6.setImageResource(getImageId("varken"));
+                break;
+            case 7: img7.setImageResource(getImageId("varken"));
+                break;
+            case 8: img8.setImageResource(getImageId("varken"));
+                break;
+            case 9: img9.setImageResource(getImageId("varken"));
+                break;
+
+        }
+
+    }
+
+    public void showScore(){
+        String s = String.valueOf(score);
+        tv.setText(s);
+        if(score == 40){
+            MediaPlayer player;
+            player = MediaPlayer.create(getContext(),getAudiofileId("goedzo"));
+            player.start();
+        }
+        if(score == 90){
+            MediaPlayer player;
+            player = MediaPlayer.create(getContext(),getAudiofileId("goedgedaan"));
+            player.start();
+            score += 10;
+            tv.setText(s);
+            Toast ImageToast = new Toast(getContext());
+            ImageView image = new ImageView(getContext());
+
+            image.setImageResource(getImageId("silvermed"));
+            ImageToast.setView(image);
+            ImageToast.setDuration(Toast.LENGTH_LONG);
+            ImageToast.show();
+
+            zilver+=1;
+        }
+
+        if(score == 180){
+            MediaPlayer player;
+            player = MediaPlayer.create(getContext(),getAudiofileId("goedgedaan"));
+            player.start();
+            score += 10;
+            tv.setText(s);
+            Toast ImageToast = new Toast(getContext());
+            ImageView image = new ImageView(getContext());
+
+            image.setImageResource(getImageId("supermedaille1"));
+            ImageToast.setView(image);
+            ImageToast.setDuration(Toast.LENGTH_LONG);
+            ImageToast.show();
+
+            goud+=1;
+        }
+    }
 
     public int getAudiofileId(String filename) {
         return getContext().getResources().getIdentifier("raw/" + filename, null, getContext().getPackageName());

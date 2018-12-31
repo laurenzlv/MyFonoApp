@@ -128,7 +128,7 @@ public class ZegHetZelfFragment extends Fragment {
 
                 image.setImageResource(getImageId(afb));
                 ImageToast.setView(image);
-                ImageToast.setDuration(Toast.LENGTH_LONG); // afbeelding misschien andere map ipv drawable?
+                ImageToast.setDuration(Toast.LENGTH_LONG);
                 ImageToast.show();
 
                 player = MediaPlayer.create(getContext(),getAudiofileId(audiofile));
