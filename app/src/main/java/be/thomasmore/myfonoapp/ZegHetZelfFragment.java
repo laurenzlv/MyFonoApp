@@ -201,7 +201,7 @@ public class ZegHetZelfFragment extends Fragment {
 
     public List<Klank> getList(){
 
-        List<Klank> list = new ArrayList<>();
+        List<Klank> list;
         SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
         int keuzeId = pref.getInt("keuze",0);
 
