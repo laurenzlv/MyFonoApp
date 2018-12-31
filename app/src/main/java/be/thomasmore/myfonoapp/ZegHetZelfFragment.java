@@ -63,6 +63,10 @@ public class ZegHetZelfFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        getActivity().setTitle("Zeg het zelf eens");
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_zeg_het_zelf, container, false);
     }
