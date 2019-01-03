@@ -188,6 +188,9 @@ public class SpelFragment extends Fragment {
                 latestClickednr = 5;
                 setKeuze(lukraak,lukr);
 
+                if(lukr >= 6){
+
+                }
             }
         });
 
