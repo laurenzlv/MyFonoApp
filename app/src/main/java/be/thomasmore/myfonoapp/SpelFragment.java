@@ -354,9 +354,6 @@ public class SpelFragment extends Fragment {
             int aantalsuper = pref.getInt("spel1MedaillesSuper", 0);
 
 
-
-
-
             if (aantal == 0){
                 SharedPreferences.Editor edt = pref.edit();
                 edt.putInt("spel1Medailles", 1);
@@ -594,25 +591,25 @@ public class SpelFragment extends Fragment {
         int keuzeId = pref.getInt("keuze",0);
 
         switch (keuzeId) {
-            case 2131230891: list = listGSV;
+            case 2131230890: list = listGSV;
                 break;
-            case 2131230889: list = listGK;
+            case 2131230888: list = listGK;
                 break;
-            case 2131230893: list = listKTI;
+            case 2131230892: list = listKTI;
                 break;
-            case 2131230892: list = listKTF;
+            case 2131230891: list = listKTF;
                 break;
-            case 2131230890: list = listGS;
+            case 2131230889: list = listGS;
                 break;
-            case 2131230894: list = listNGN;
+            case 2131230893: list = listNGN;
                 break;
-            case 2131230888: list = listFT;
+            case 2131230887: list = listFT;
                 break;
-            case 2131230895: list = listST;
+            case 2131230894: list = listST;
                 break;
-            case 2131230887: list = listCHT;
+            case 2131230886: list = listCHT;
                 break;
-            case 2131230896: list = listSZT;
+            case 2131230895: list = listSZT;
                 break;
             default: list = listSZT;
                 break;
