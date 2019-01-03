@@ -355,6 +355,8 @@ public class SpelFragment extends Fragment {
 
 
 
+
+
             if (aantal == 0){
                 SharedPreferences.Editor edt = pref.edit();
                 edt.putInt("spel1Medailles", 1);
@@ -368,7 +370,7 @@ public class SpelFragment extends Fragment {
                 ImageToast.setDuration(Toast.LENGTH_LONG);
                 ImageToast.show();
             }
-            else if (aantal < 6){
+            else if (aantal < 5){
 
                 SharedPreferences.Editor edt = pref.edit();
                 edt.putInt("spel1Medailles", aantal + 1);
@@ -383,22 +385,7 @@ public class SpelFragment extends Fragment {
                 ImageToast.setDuration(Toast.LENGTH_LONG);
                 ImageToast.show();
             }
-            else if (aantal == 6 || aantal > 5 && aantalsuper == 0){
-                SharedPreferences.Editor edt = pref.edit();
-                edt.putInt("spel1MedaillesSuper",   1);
-                edt.commit();
-
-                edt.putInt("spel1Medailles", 0);
-                edt.commit();
-
-                Toast ImageToast = new Toast(getContext());
-                ImageView image = new ImageView(getContext());
-                image.setImageResource(getImageId("supermedaille1"));
-                ImageToast.setView(image);
-                ImageToast.setDuration(Toast.LENGTH_LONG);
-                ImageToast.show();
-            }
-            else if (aantal == 6 || aantal > 5 && aantalsuper != 0){
+            else if (aantal > 5 && aantalsuper != 0){
                 SharedPreferences.Editor edt = pref.edit();
                 edt.putInt("spel1MedaillesSuper",   aantalsuper + 1);
                 edt.commit();
@@ -413,6 +400,22 @@ public class SpelFragment extends Fragment {
                 ImageToast.setDuration(Toast.LENGTH_LONG);
                 ImageToast.show();
             }
+            else if (aantal > 5 && aantalsuper == 0){
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putInt("spel1MedaillesSuper",   1);
+                edt.commit();
+
+                edt.putInt("spel1Medailles", 0);
+                edt.commit();
+
+                Toast ImageToast = new Toast(getContext());
+                ImageView image = new ImageView(getContext());
+                image.setImageResource(getImageId("supermedaille1"));
+                ImageToast.setView(image);
+                ImageToast.setDuration(Toast.LENGTH_LONG);
+                ImageToast.show();
+            }
+
 
 
 
