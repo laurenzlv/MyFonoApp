@@ -357,6 +357,7 @@ public class SpelFragment extends Fragment {
             int aantalsuper = pref.getInt("spel1MedaillesSuper", 0);
 
 
+
             if (aantal == 0){
                 SharedPreferences.Editor edt = pref.edit();
                 edt.putInt("spel1Medailles", 1);
