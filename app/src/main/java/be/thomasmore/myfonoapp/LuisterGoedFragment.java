@@ -162,25 +162,25 @@ public class LuisterGoedFragment extends Fragment {
 
         if (player.isPlaying() == false && audioManager.isWiredHeadsetOn()){
             switch (keuzeId) {
-                case 2131230891:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
+                case 2131230890:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
                     break;
-                case 2131230889:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
+                case 2131230888:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks4);
                     break;
-                case 2131230893:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks5);
+                case 2131230892:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks5);
                     break;
-                case 2131230892:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks1);
+                case 2131230891:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks1);
                     break;
-                case 2131230890:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
+                case 2131230889:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
                     break;
-                case 2131230894:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks2);
+                case 2131230893:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks2);
                     break;
-                case 2131230888:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks9);
+                case 2131230887:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks9);
                     break;
-                case 2131230895:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks6);
+                case 2131230894:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks6);
                     break;
-                case 2131230887:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
+                case 2131230886:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks3);
                     break;
-                case 2131230896:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks7en8);
+                case 2131230895:  player = MediaPlayer.create(getView().getContext(), R.raw.reeks7en8);
                     break;
                 default: player = MediaPlayer.create(getView().getContext(), R.raw.fout);
                     break;
