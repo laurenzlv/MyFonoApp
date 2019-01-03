@@ -88,7 +88,7 @@ public class MedaillemuurFragment extends Fragment {
         int aantalsuper = pref.getInt("spel1MedaillesSuper", 0);
 
         spel1medailles.setText(Integer.toString(aantal));
-        spel1Supermedailles.setText(Integer.toString(aantalsuper - 1));
+        spel1Supermedailles.setText(Integer.toString(aantalsuper));
 
 
 

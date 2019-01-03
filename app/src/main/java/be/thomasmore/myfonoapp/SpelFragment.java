@@ -334,6 +334,8 @@ public class SpelFragment extends Fragment {
         String s = String.valueOf(score);
         tv.setText(s);
 
+
+
         if(score == 40){
 
             MediaPlayer player;
@@ -342,16 +344,14 @@ public class SpelFragment extends Fragment {
             }
 
 
-        if(score > 49 && score < 59){
+
+        if(score > 79 && score < 86){
 
             SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
             int aantal = pref.getInt("spel1Medailles", 0);
 
 
             int aantalsuper = pref.getInt("spel1MedaillesSuper", 0);
-
-
-
 
 
             if (aantal == 0){
@@ -367,7 +367,7 @@ public class SpelFragment extends Fragment {
                 ImageToast.setDuration(Toast.LENGTH_LONG);
                 ImageToast.show();
             }
-            else if (aantal < 5){
+            else if (aantal < 6){
 
                 SharedPreferences.Editor edt = pref.edit();
                 edt.putInt("spel1Medailles", aantal + 1);
