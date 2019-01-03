@@ -53,6 +53,10 @@ public class MainActivityNav extends AppCompatActivity
 
 
 
+//        edt.putInt("spel1Medailles", 0);
+//        edt.commit();
+
+
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

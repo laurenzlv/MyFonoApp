@@ -39,6 +39,7 @@ public class LuisterGoedFragment extends Fragment {
     ImageButton pausebtn;
     ImageButton stopbtn;
     ImageView oorbtn;
+    int aantalMedailles;
 
     public LuisterGoedFragment() {
         // Required empty public constructor
@@ -79,6 +80,8 @@ public class LuisterGoedFragment extends Fragment {
         final View RootView = inflater.inflate(R.layout.fragment_luister_goed, container, false);
 
         getActivity().setTitle("Luister goed");
+
+        aantalMedailles = 0;
 
 
         playbtn = (ImageButton) RootView.findViewById(R.id.play);
@@ -191,6 +194,7 @@ public class LuisterGoedFragment extends Fragment {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         stopPlayer();
+
                     }
                 });
             }
@@ -204,6 +208,8 @@ public class LuisterGoedFragment extends Fragment {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 stopPlayer();
+
+
             }
         });
 
@@ -261,6 +267,11 @@ public class LuisterGoedFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+    public int getImageId(String imageName) {
+        return getContext().getResources().getIdentifier("drawable/" + imageName, null, getContext().getPackageName());
     }
 
 

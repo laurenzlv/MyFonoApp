@@ -333,10 +333,59 @@ public class SpelFragment extends Fragment {
     public void showScore(){
         String s = String.valueOf(score);
         tv.setText(s);
+
+
+
         if(score == 40){
+
+
+            SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+            int aantal = pref.getInt("spel1Medailles", 0);
+
+
+            int aantalsuper = pref.getInt("spel1MedaillesSuper", 0);
+
+            if (aantal == 0){
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putInt("spel1Medailles", 1);
+                edt.commit();
+            }else{
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putInt("spel1Medailles", aantal + 1);
+                edt.commit();
+
+                if (aantal == 2 || aantal > 2 && aantalsuper == 0){
+                    edt.putInt("spel1MedaillesSuper",   1);
+                    edt.commit();
+
+                    edt.putInt("spel1Medailles", 0);
+                    edt.commit();
+                } else if (aantal == 2 || aantal > 2){
+                    edt.putInt("spel1MedaillesSuper",   aantalsuper + 1);
+                    edt.commit();
+
+                    edt.putInt("spel1Medailles", 0);
+                    edt.commit();
+                }
+            }
+
+
+
+
+
+
+
             MediaPlayer player;
             player = MediaPlayer.create(getContext(),getAudiofileId("goedzo"));
             player.start();
+
+            Toast ImageToast = new Toast(getContext());
+            ImageView image = new ImageView(getContext());
+
+            image.setImageResource(getImageId("supermedaille1"));
+            ImageToast.setView(image);
+            ImageToast.setDuration(Toast.LENGTH_LONG);
+            ImageToast.show();
         }
         if(score == 90){
             MediaPlayer player;
