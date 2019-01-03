@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
 
             android:gravity="center"
-            android:text="Luister eens goed"
+            android:text="Zeg het zelf eens"
             android:textColor="@color/colorPrimary"
             android:textSize="30sp" />
 
@@ -54,7 +54,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/spel1medailles"
+                    android:id="@+id/spel1Supermedailles"
                     android:layout_width="169dp"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -63,7 +63,7 @@
                     android:textSize="50sp" />
 
                 <TextView
-                    android:id="@+id/spel1Supermedailles"
+                    android:id="@+id/spel1medailles"
                     android:layout_width="176dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="100dp"

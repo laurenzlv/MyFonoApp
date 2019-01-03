@@ -334,10 +334,15 @@ public class SpelFragment extends Fragment {
         String s = String.valueOf(score);
         tv.setText(s);
 
-
-
         if(score == 40){
 
+            MediaPlayer player;
+            player = MediaPlayer.create(getContext(),getAudiofileId("goedzo"));
+            player.start();
+            }
+
+
+        if(score > 49 && score < 59){
 
             SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
             int aantal = pref.getInt("spel1Medailles", 0);
@@ -345,81 +350,76 @@ public class SpelFragment extends Fragment {
 
             int aantalsuper = pref.getInt("spel1MedaillesSuper", 0);
 
+
+
             if (aantal == 0){
                 SharedPreferences.Editor edt = pref.edit();
                 edt.putInt("spel1Medailles", 1);
                 edt.commit();
-            }else{
+
+                Toast ImageToast = new Toast(getContext());
+                ImageView image = new ImageView(getContext());
+
+                image.setImageResource(getImageId("minimedaille1"));
+                ImageToast.setView(image);
+                ImageToast.setDuration(Toast.LENGTH_LONG);
+                ImageToast.show();
+            }
+            else if (aantal < 6){
+
                 SharedPreferences.Editor edt = pref.edit();
                 edt.putInt("spel1Medailles", aantal + 1);
                 edt.commit();
 
-                if (aantal == 2 || aantal > 2 && aantalsuper == 0){
-                    edt.putInt("spel1MedaillesSuper",   1);
-                    edt.commit();
 
-                    edt.putInt("spel1Medailles", 0);
-                    edt.commit();
-                } else if (aantal == 2 || aantal > 2){
-                    edt.putInt("spel1MedaillesSuper",   aantalsuper + 1);
-                    edt.commit();
+                Toast ImageToast = new Toast(getContext());
+                ImageView image = new ImageView(getContext());
 
-                    edt.putInt("spel1Medailles", 0);
-                    edt.commit();
-                }
+                image.setImageResource(getImageId("minimedaille1"));
+                ImageToast.setView(image);
+                ImageToast.setDuration(Toast.LENGTH_LONG);
+                ImageToast.show();
+            }
+            else if (aantal == 6 || aantal > 5 && aantalsuper == 0){
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putInt("spel1MedaillesSuper",   1);
+                edt.commit();
+
+                edt.putInt("spel1Medailles", 0);
+                edt.commit();
+
+                Toast ImageToast = new Toast(getContext());
+                ImageView image = new ImageView(getContext());
+                image.setImageResource(getImageId("supermedaille1"));
+                ImageToast.setView(image);
+                ImageToast.setDuration(Toast.LENGTH_LONG);
+                ImageToast.show();
+            }
+            else if (aantal == 6 || aantal > 5 && aantalsuper != 0){
+                SharedPreferences.Editor edt = pref.edit();
+                edt.putInt("spel1MedaillesSuper",   aantalsuper + 1);
+                edt.commit();
+
+                edt.putInt("spel1Medailles", 0);
+                edt.commit();
+
+                Toast ImageToast = new Toast(getContext());
+                ImageView image = new ImageView(getContext());
+                image.setImageResource(getImageId("supermedaille1"));
+                ImageToast.setView(image);
+                ImageToast.setDuration(Toast.LENGTH_LONG);
+                ImageToast.show();
             }
 
 
 
-
-
-
-
-            MediaPlayer player;
-            player = MediaPlayer.create(getContext(),getAudiofileId("goedzo"));
-            player.start();
-
-            Toast ImageToast = new Toast(getContext());
-            ImageView image = new ImageView(getContext());
-
-            image.setImageResource(getImageId("supermedaille1"));
-            ImageToast.setView(image);
-            ImageToast.setDuration(Toast.LENGTH_LONG);
-            ImageToast.show();
-        }
-        if(score == 90){
             MediaPlayer player;
             player = MediaPlayer.create(getContext(),getAudiofileId("goedgedaan"));
             player.start();
-            score += 10;
-            tv.setText(s);
-            Toast ImageToast = new Toast(getContext());
-            ImageView image = new ImageView(getContext());
 
-            image.setImageResource(getImageId("silvermed"));
-            ImageToast.setView(image);
-            ImageToast.setDuration(Toast.LENGTH_LONG);
-            ImageToast.show();
-
-            zilver+=1;
         }
 
-        if(score == 180){
-            MediaPlayer player;
-            player = MediaPlayer.create(getContext(),getAudiofileId("goedgedaan"));
-            player.start();
-            score += 10;
-            tv.setText(s);
-            Toast ImageToast = new Toast(getContext());
-            ImageView image = new ImageView(getContext());
 
-            image.setImageResource(getImageId("supermedaille1"));
-            ImageToast.setView(image);
-            ImageToast.setDuration(Toast.LENGTH_LONG);
-            ImageToast.show();
-
-            goud+=1;
-        }
     }
 
     public int getAudiofileId(String filename) {

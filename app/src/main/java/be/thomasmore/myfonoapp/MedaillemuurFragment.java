@@ -1,8 +1,10 @@
 package be.thomasmore.myfonoapp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -29,6 +32,9 @@ public class MedaillemuurFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    TextView spel1medailles;
+    TextView spel1Supermedailles;
 
     private OnFragmentInteractionListener mListener;
 
@@ -70,7 +76,23 @@ public class MedaillemuurFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_medaillemuur, container, false);
+        final View RootView = inflater.inflate(R.layout.fragment_medaillemuur, container, false);
+
+        spel1medailles = (TextView) RootView.findViewById(R.id.spel1medailles);
+        spel1Supermedailles = (TextView) RootView.findViewById(R.id.spel1Supermedailles);
+
+        SharedPreferences pref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        int aantal = pref.getInt("spel1Medailles", 0);
+
+
+        int aantalsuper = pref.getInt("spel1MedaillesSuper", 0);
+
+        spel1medailles.setText(Integer.toString(aantal));
+        spel1Supermedailles.setText(Integer.toString(aantalsuper - 1));
+
+
+
+        return RootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
